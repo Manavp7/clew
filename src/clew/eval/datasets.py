@@ -18,3 +18,7 @@ def load_er_pairs() -> dict:
 
 def load_extraction_gold() -> dict:
     return json.loads(_gold_path("extraction_13d.json").read_text())
+
+
+def load_science_gold() -> dict:
+    return json.loads(_gold_path("science_openalex.json").read_text())

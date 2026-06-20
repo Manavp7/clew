@@ -12,10 +12,16 @@ from sqlalchemy.orm import Session
 from clew.db.models import Entity
 from clew.packs.pack_a_financial import EntityType
 
+# Typed entity-id prefixes across all packs (the type prefix encodes the type).
 _TYPE_PREFIX: dict[str, str] = {
     EntityType.ORGANIZATION: "ORG",
     EntityType.PERSON: "PER",
     EntityType.SECURITY: "SEC",
+    # Pack B (scientific)
+    "Paper": "PAP",
+    "Author": "AUT",
+    "Institution": "INS",
+    "Concept": "CON",
 }
 
 

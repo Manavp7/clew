@@ -60,6 +60,34 @@ def ingest_edgar(
     console.print(summary)
 
 
+@ingest_app.command("openalex")
+def ingest_openalex_cmd(
+    limit: int = typer.Option(50, help="Number of works to ingest"),
+    concept: str | None = typer.Option(None, help="OpenAlex concept id filter (e.g. C154945302)"),
+    search: str | None = typer.Option(None, help="Full-text search query"),
+    from_date: str | None = typer.Option(None, help="from_publication_date (YYYY-MM-DD)"),
+) -> None:
+    """Ingest scientific works from OpenAlex (Pack B)."""
+    from clew.ingest.openalex import OpenAlexConnector
+    from clew.ingest.service import ingest_documents
+
+    console.print(f"[bold]Ingesting[/] {limit} OpenAlex works ...")
+    summary = ingest_documents(
+        OpenAlexConnector(), limit, fetch_cap=limit, concept_id=concept,
+        search=search, from_date=from_date,
+    )
+    console.print(summary)
+
+
+@extract_app.command("science")
+def extract_science_cmd(limit: int | None = typer.Option(None)) -> None:
+    """Extract Pack-B (scientific) claims from ingested OpenAlex works."""
+    from clew.extract.science import run_science_claims
+
+    console.print("[bold]Extracting scientific claims[/] ...")
+    console.print(run_science_claims(limit=limit))
+
+
 @extract_app.command("mentions")
 def extract_mentions_cmd(
     threshold: float = typer.Option(0.5, help="GLiNER confidence threshold"),
@@ -164,6 +192,14 @@ def eval_citation_cmd() -> None:
     from clew.eval.run import eval_citation
 
     console.print(eval_citation())
+
+
+@eval_app.command("science")
+def eval_science_cmd() -> None:
+    """Run Pack-B (scientific) extraction evaluation."""
+    from clew.eval.run import eval_science
+
+    console.print(eval_science())
 
 
 @eval_app.command("er-compare")

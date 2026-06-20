@@ -230,10 +230,60 @@ def eval_er_compare() -> dict:
     return {"results": results, "recommended_default": recommended}
 
 
+def eval_science() -> dict:
+    """Pack-B extraction check: known works have expected authorship + citations.
+
+    Skips gracefully (status='skipped') if no OpenAlex works are ingested, so the
+    harness is safe to run on a Pack-A-only ledger.
+    """
+    from clew.db.models import Document
+    from clew.eval.datasets import load_science_gold
+
+    gold = load_science_gold()
+    checked = author_ok = cites_ok = 0
+    with read_session() as session:
+        for w in gold["works"]:
+            doc = session.execute(
+                select(Document).where(Document.external_id == w["openalex"])
+            ).scalars().first()
+            if doc is None:
+                continue
+            checked += 1
+            claim_ids = session.execute(
+                select(Evidence.claim_id).where(Evidence.document_id == doc.id)
+            ).scalars().all()
+            claims = list(
+                session.execute(select(Claim).where(Claim.id.in_(set(claim_ids)))).scalars().all()
+            )
+            authored = [c for c in claims if c.predicate == "AUTHORED"]
+            cites = [c for c in claims if c.predicate == "CITES"]
+            from clew.db.models import Entity
+
+            names = {
+                (session.get(Entity, c.subject_id).canonical_name) for c in authored
+            }
+            if w["expect_author_name"] in names:
+                author_ok += 1
+            if len(cites) >= w.get("min_citations", 1):
+                cites_ok += 1
+
+    if checked == 0:
+        metrics = {"status": "skipped", "reason": "no OpenAlex works ingested"}
+    else:
+        metrics = {
+            "works_checked": checked,
+            "author_recall": round(author_ok / checked, 4),
+            "citation_coverage": round(cites_ok / checked, 4),
+        }
+    _persist("extraction", "science_openalex@v1", metrics)
+    return metrics
+
+
 def eval_all() -> dict:
     return {
         "er": eval_er(),
         "extraction": eval_extraction(),
         "citation": eval_citation(),
+        "science": eval_science(),
         "er_backend_comparison": eval_er_compare(),
     }

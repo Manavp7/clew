@@ -1,0 +1,13 @@
+{
+  "dataset": "science_openalex@v1",
+  "description": "Expected Pack-B relationships for well-known OpenAlex works, keyed by OpenAlex work id. Used to check AUTHORED/CITES extraction and evidence grounding.",
+  "works": [
+    {
+      "openalex": "W2194775991",
+      "title": "Deep Residual Learning for Image Recognition",
+      "expect_author_orcid": "0000-0001-7318-9658",
+      "expect_author_name": "Kaiming He",
+      "min_citations": 10
+    }
+  ]
+}
