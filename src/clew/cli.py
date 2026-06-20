@@ -34,5 +34,23 @@ def version() -> None:
     console.print(f"clew {__version__}")
 
 
+@ingest_app.command("edgar")
+def ingest_edgar(
+    form: str = typer.Option("13D", help="13D or 13G"),
+    limit: int = typer.Option(100, help="Max filings to ingest"),
+    year: int | None = typer.Option(None, help="Filter by filing year"),
+    quarter: int | None = typer.Option(None, help="Filter by quarter (1-4)"),
+) -> None:
+    """Ingest SEC EDGAR 13D/13G filings into the ledger."""
+    from clew.ingest.edgar import EdgarConnector
+    from clew.ingest.service import ingest_documents
+
+    console.print(f"[bold]Ingesting[/] {limit} {form} filings from EDGAR ...")
+    summary = ingest_documents(
+        EdgarConnector(), limit, form=form, year=year, quarter=quarter
+    )
+    console.print(summary)
+
+
 if __name__ == "__main__":
     app()
