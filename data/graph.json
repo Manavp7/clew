@@ -1,0 +1,78 @@
+{
+  "nodes": [
+    {
+      "id": "ORG_000032",
+      "label": "Vertical Aerospace Ltd.",
+      "type": "Organization",
+      "cik": "1867102",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000048",
+      "label": "Murano Global Investments PLC",
+      "type": "Organization",
+      "cik": "1988776",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000049",
+      "label": "HCM Investor Holdings, LLC",
+      "type": "Organization",
+      "cik": "1864019",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000066",
+      "label": "ARS Pharmaceuticals, Inc.",
+      "type": "Organization",
+      "cik": "1671858",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000067",
+      "label": "RA CAPITAL MANAGEMENT, L.P.",
+      "type": "Organization",
+      "cik": "1346824",
+      "degree": 1
+    },
+    {
+      "id": "PER_000078",
+      "label": "Fitzpatrick Stephen James",
+      "type": "Person",
+      "cik": "1911254",
+      "degree": 1
+    }
+  ],
+  "edges": [
+    {
+      "id": "ORG_000049-ORG_000048-20",
+      "source": "ORG_000049",
+      "target": "ORG_000048",
+      "predicate": "OWNS",
+      "stake_pct": 11.0,
+      "valid_from": "2024-03-20",
+      "claim_id": 20,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000067-ORG_000066-21",
+      "source": "ORG_000067",
+      "target": "ORG_000066",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-03-27",
+      "claim_id": 21,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_000078-ORG_000032-19",
+      "source": "PER_000078",
+      "target": "ORG_000032",
+      "predicate": "OWNS",
+      "stake_pct": 19.17,
+      "valid_from": "2024-03-22",
+      "claim_id": 19,
+      "evidence_count": 1
+    }
+  ]
+}

@@ -87,5 +87,53 @@ def resolve_run_cmd(
     console.print(run_resolution(backend=backend))
 
 
+@project_app.command("graph")
+def project_graph_cmd(
+    out: str = typer.Option("data/graph.json", help="Output JSON path"),
+) -> None:
+    """Rebuild the NetworkX graph projection from the ledger and export JSON."""
+    import json
+    from pathlib import Path
+
+    from clew.db.session import read_session
+    from clew.project.graph import build_graph, graph_to_json
+
+    with read_session() as session:
+        g = build_graph(session)
+        data = graph_to_json(g)
+    Path(out).parent.mkdir(parents=True, exist_ok=True)
+    Path(out).write_text(json.dumps(data, indent=2))
+    console.print(
+        f"graph: {g.number_of_nodes()} nodes, {g.number_of_edges()} edges -> {out}"
+    )
+
+
+@project_app.command("vectors")
+def project_vectors_cmd(
+    only_missing: bool = typer.Option(False, help="Only embed entities without a vector"),
+) -> None:
+    """Rebuild entity embeddings into pgvector."""
+    from clew.project.vectors import build_entity_vectors
+
+    console.print("[bold]Embedding entities[/] ...")
+    console.print(build_entity_vectors(only_missing=only_missing))
+
+
+@project_app.command("all")
+def project_all_cmd() -> None:
+    """Rebuild all projections (graph + vectors)."""
+    project_vectors_cmd(only_missing=False)
+    project_graph_cmd(out="data/graph.json")
+
+
+@app.command()
+def search(query: str, limit: int = 10) -> None:
+    """Semantic entity search over the vector projection."""
+    from clew.project.vectors import search_entities
+
+    for r in search_entities(query, limit=limit):
+        console.print(f"  {r['score']:.3f}  {r['id']}  {r['canonical_name']} ({r['type']})")
+
+
 if __name__ == "__main__":
     app()
