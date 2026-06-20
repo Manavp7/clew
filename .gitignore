@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Env & secrets
+.env
+.env.local
+
+# Data (raw documents are content-hashed & re-downloadable; gold sets ARE committed)
+data/raw/
+data/cache/
+*.duckdb
+
+# Node / web
+node_modules/
+web/.next/
+web/out/
+
+# OS
+.DS_Store

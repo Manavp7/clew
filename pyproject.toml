@@ -1,0 +1,68 @@
+[project]
+name = "clew"
+version = "0.1.0"
+description = "Canonical Intelligence Engine — bitemporal, evidence-backed claim ledger"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "sqlalchemy>=2.0.30",
+    "alembic>=1.13",
+    "psycopg[binary]>=3.2",
+    "pgvector>=0.3",
+    "pydantic>=2.7",
+    "pydantic-settings>=2.3",
+    "python-dotenv>=1.0",
+    "typer>=0.12",
+    "rich>=13.7",
+]
+
+[project.optional-dependencies]
+# Phase 1 pipeline deps (heavier; installed as the slice is built)
+pipeline = [
+    "edgartools>=3.5",
+    "beautifulsoup4>=4.12",
+    "lxml>=5.2",
+    "gliner>=0.2.13",
+    "splink>=4.0",
+    "duckdb>=1.0",
+    "networkx>=3.3",
+    "openai>=1.40",
+    "httpx>=0.27",
+    "sentence-transformers>=3.0",
+    "rapidfuzz>=3.9",
+]
+api = [
+    "fastapi>=0.111",
+    "uvicorn[standard]>=0.30",
+]
+dev = [
+    "pytest>=8.2",
+    "pytest-cov>=5.0",
+    "ruff>=0.5",
+]
+
+[project.scripts]
+clew = "clew.cli:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/clew"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "W"]
+ignore = ["B008"]  # typer uses function calls in defaults
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+markers = [
+    "integration: requires a live Postgres database",
+]
