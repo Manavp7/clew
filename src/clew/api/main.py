@@ -69,6 +69,37 @@ def health() -> dict:
     return {"status": "ok", "claims": len(n_claims), "entities": len(n_entities)}
 
 
+@app.get("/metrics")
+def metrics(limit: int = 25) -> dict:
+    """Monitoring: recent pipeline run-log + latest eval metrics per dataset."""
+    from clew.db.models import EvalRun, RunLog
+
+    with read_session() as session:
+        runs = session.execute(
+            select(RunLog).order_by(RunLog.created_at.desc()).limit(limit)
+        ).scalars().all()
+        evals = session.execute(
+            select(EvalRun).order_by(EvalRun.created_at.desc()).limit(limit)
+        ).scalars().all()
+        return {
+            "run_log": [
+                {
+                    "stage": r.stage,
+                    "status": r.status,
+                    "duration_ms": r.duration_ms,
+                    "counts": r.counts,
+                    "at": r.created_at.isoformat() if r.created_at else None,
+                }
+                for r in runs
+            ],
+            "eval": [
+                {"stage": e.stage, "dataset": e.dataset, "metrics": e.metrics,
+                 "at": e.created_at.isoformat() if e.created_at else None}
+                for e in evals
+            ],
+        }
+
+
 @app.get("/entities/{entity_id}")
 def get_entity(entity_id: str) -> dict:
     with read_session() as session:

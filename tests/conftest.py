@@ -48,7 +48,7 @@ def session():
 
 
 _LEDGER_TABLES = (
-    "alert, watch, merge_suggestion, er_decision, entity_merge_log, "
+    "run_log, alert, watch, merge_suggestion, er_decision, entity_merge_log, "
     "evidence, claim, mention, contradiction, entity, document, source"
 )
 

@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from datetime import date
 
-from sqlalchemy import select
+from sqlalchemy import insert, select
 
 from clew.config import get_settings
 from clew.db.models import Document
@@ -28,29 +28,34 @@ def run_mentions(threshold: float = 0.5, limit: int | None = None) -> dict:
     written = 0
     with write_session() as session:
         from clew.db.models import Mention
-        from clew.ledger.writer import write_mention
 
         done_doc_ids = set(
             session.execute(select(Mention.document_id).distinct()).scalars().all()
         )
-        docs = session.execute(select(Document)).scalars().all()
+        docs = session.execute(
+            select(Document).where(Document.doc_type != "openalex_work")
+        ).scalars().all()
         if limit:
             docs = docs[:limit]
         for doc in docs:
             if not doc.text or doc.id in done_doc_ids:
                 continue  # incremental: skip already-processed documents
             spans = extract_mentions(doc.text, threshold=threshold)
-            for s in spans:
-                write_mention(
-                    session,
-                    document_id=doc.id,
-                    surface_text=s.surface,
-                    char_start=s.start,
-                    char_end=s.end,
-                    ner_type=s.ner_type,
-                    extractor=GLINER_VERSION,
-                )
-                written += 1
+            # Scale: bulk-insert mentions for the document in one statement.
+            rows = [
+                {
+                    "document_id": doc.id,
+                    "surface_text": s.surface,
+                    "char_start": s.start,
+                    "char_end": s.end,
+                    "ner_type": s.ner_type,
+                    "extractor": GLINER_VERSION,
+                }
+                for s in spans
+            ]
+            if rows:
+                session.execute(insert(Mention), rows)
+                written += len(rows)
     return {"mentions_written": written}
 
 
@@ -146,7 +151,9 @@ def run_claims(use_llm: bool | None = None, limit: int | None = None) -> dict:
         done_doc_ids = set(
             session.execute(select(Evidence.document_id).distinct()).scalars().all()
         )
-        docs = session.execute(select(Document)).scalars().all()
+        docs = session.execute(
+            select(Document).where(Document.doc_type != "openalex_work")
+        ).scalars().all()
         if limit:
             docs = docs[:limit]
         for doc in docs:

@@ -42,6 +42,35 @@ def version() -> None:
     console.print(f"clew {__version__}")
 
 
+@app.command()
+def pipeline(pack: str = typer.Option("all", help="a | b | all")) -> None:
+    """Run the incremental processing pipeline (idempotent) with per-stage logging."""
+    from clew.pipeline.orchestrator import run_pipeline
+
+    result = run_pipeline(pack=pack)
+    for st in result["stages"]:
+        console.print(f"  [{st['status']}] {st['stage']} ({st['duration_ms']}ms) "
+                      + ", ".join(f"{k}={v}" for k, v in st.items()
+                                  if k not in ('stage', 'status', 'duration_ms')))
+
+
+@app.command()
+def metrics(limit: int = 15) -> None:
+    """Show recent pipeline run-log entries."""
+    from sqlalchemy import select
+
+    from clew.db.models import RunLog
+    from clew.db.session import read_session
+
+    with read_session() as session:
+        rows = session.execute(
+            select(RunLog).order_by(RunLog.created_at.desc()).limit(limit)
+        ).scalars().all()
+        for r in rows:
+            console.print(f"  {r.created_at:%H:%M:%S} [{r.status}] {r.stage} "
+                          f"{r.duration_ms}ms {r.counts}")
+
+
 @ingest_app.command("edgar")
 def ingest_edgar(
     form: str = typer.Option("13D", help="13D or 13G"),

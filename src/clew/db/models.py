@@ -307,6 +307,24 @@ class Alert(Base):
     )
 
 
+class RunLog(Base):
+    """Per-stage pipeline run record (monitoring: counts + duration + version)."""
+
+    __tablename__ = "run_log"
+    __table_args__ = (Index("ix_run_log_stage", "stage"),)
+
+    id: Mapped[int] = mapped_column(BigInteger, primary_key=True, autoincrement=True)
+    stage: Mapped[str] = mapped_column(Text, nullable=False)
+    status: Mapped[str] = mapped_column(Text, nullable=False, default="ok")  # ok | error
+    counts: Mapped[dict] = mapped_column(JSONB, default=dict, server_default="{}")
+    duration_ms: Mapped[int] = mapped_column(Integer, default=0)
+    pipeline_git_sha: Mapped[str | None] = mapped_column(Text)
+    error: Mapped[str | None] = mapped_column(Text)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), nullable=False
+    )
+
+
 class EvalRun(Base):
     """Versioned evaluation run — metrics over time vs pipeline/model version."""
 
