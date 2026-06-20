@@ -39,7 +39,8 @@ changes, contradiction detection, and stake-change timelines.
 uv sync --extra dev
 
 # 2. Start Postgres + apply the ledger schema
-make db-up && make migrate
+make db-up && make migrate        # native Postgres 16 (apt)
+# or, via Docker:  make db-up-docker && make migrate
 
 # 3. Run tests
 make test

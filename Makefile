@@ -8,11 +8,17 @@ help:
 install: ## Sync all dependency groups via uv
 	uv sync --extra dev --extra pipeline --extra api
 
-db-up: ## Start the local Postgres 16 cluster
+db-up: ## Start the local Postgres 16 cluster (native apt install)
 	sudo pg_ctlcluster $(PG_VER) main start || true
 
-db-down: ## Stop the local Postgres 16 cluster
+db-down: ## Stop the local Postgres 16 cluster (native apt install)
 	sudo pg_ctlcluster $(PG_VER) main stop || true
+
+db-up-docker: ## Start Postgres + pgvector via docker compose (alternative)
+	docker compose up -d
+
+db-down-docker: ## Stop the docker compose Postgres
+	docker compose down
 
 migrate: ## Apply database migrations
 	uv run alembic upgrade head

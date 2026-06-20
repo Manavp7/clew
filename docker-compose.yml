@@ -1,0 +1,33 @@
+# Local infrastructure for clew (Phase 1).
+#
+# The Claim Ledger is the only source of truth, so Phase 1 needs just Postgres
+# with pgvector. (Neo4j / Qdrant are deferred — graph + vectors are rebuildable
+# projections that live in Postgres for now.)
+#
+# Usage:
+#   docker compose up -d
+#   CLEW_DATABASE_URL=postgresql+psycopg://clew:clew@localhost:5432/clew uv run alembic upgrade head
+#
+# This mirrors the connection details in .env.example and the native
+# `make db-up` path, so either provisioning method works interchangeably.
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: clew-postgres
+    environment:
+      POSTGRES_USER: clew
+      POSTGRES_PASSWORD: clew
+      POSTGRES_DB: clew
+    ports:
+      - "5432:5432"
+    volumes:
+      - clew_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U clew -d clew"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  clew_pgdata:
