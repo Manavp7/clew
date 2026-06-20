@@ -14,7 +14,7 @@ from fastapi import FastAPI, HTTPException, Query
 from fastapi.responses import HTMLResponse
 from sqlalchemy import select
 
-from clew.db.models import Claim, Document, Entity, Evidence
+from clew.db.models import Claim, Contradiction, Document, Entity, Evidence
 from clew.db.session import read_session
 from clew.ledger.asof import claims_asof, timeline
 from clew.project.graph import build_graph, ego_graph, graph_to_json
@@ -45,6 +45,7 @@ def _claim_dict(session, c: Claim) -> dict:
         "valid_to": c.valid_to.isoformat() if c.valid_to else None,
         "asserted_at": c.asserted_at.isoformat() if c.asserted_at else None,
         "retracted_at": c.retracted_at.isoformat() if c.retracted_at else None,
+        "superseded_by": c.superseded_by,
         "confidence": c.confidence,
         "extractor": c.extractor,
         "evidence": [
@@ -162,6 +163,46 @@ def get_graph(
         if center:
             g = ego_graph(g, center, radius=radius)
         return graph_to_json(g)
+
+
+@app.get("/contradictions")
+def list_contradictions(status: str | None = None, limit: int = 100) -> dict:
+    """Materialized contradictions with a short summary of each conflicting claim."""
+    with read_session() as session:
+        stmt = select(Contradiction).order_by(Contradiction.detected_at.desc()).limit(limit)
+        if status:
+            stmt = stmt.where(Contradiction.status == status)
+        rows = session.execute(stmt).scalars().all()
+
+        def summarize(cid: int) -> dict:
+            c = session.get(Claim, cid)
+            if c is None:
+                return {"claim_id": cid}
+            subj = session.get(Entity, c.subject_id)
+            obj = session.get(Entity, c.object_id) if c.object_id else None
+            return {
+                "claim_id": c.id,
+                "subject": subj.canonical_name if subj else c.subject_id,
+                "predicate": c.predicate,
+                "object": obj.canonical_name if obj else c.object_id,
+                "stake_pct": (c.qualifiers or {}).get("stake_pct"),
+                "valid_from": c.valid_from.isoformat() if c.valid_from else None,
+                "valid_to": c.valid_to.isoformat() if c.valid_to else None,
+            }
+
+        return {
+            "count": len(rows),
+            "contradictions": [
+                {
+                    "id": r.id,
+                    "type": r.type,
+                    "status": r.status,
+                    "claim_a": summarize(r.claim_a),
+                    "claim_b": summarize(r.claim_b),
+                }
+                for r in rows
+            ],
+        }
 
 
 @app.get("/documents/{document_id}")

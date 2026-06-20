@@ -18,12 +18,14 @@ extract_app = typer.Typer(help="Extract mentions + claims")
 resolve_app = typer.Typer(help="Entity resolution")
 project_app = typer.Typer(help="Rebuild projections from the ledger")
 eval_app = typer.Typer(help="Evaluation harness")
+reconcile_app = typer.Typer(help="Ledger reconciliation: supersession + contradictions")
 
 app.add_typer(ingest_app, name="ingest")
 app.add_typer(extract_app, name="extract")
 app.add_typer(resolve_app, name="resolve")
 app.add_typer(project_app, name="project")
 app.add_typer(eval_app, name="eval")
+app.add_typer(reconcile_app, name="reconcile")
 
 
 @app.command()
@@ -156,6 +158,41 @@ def eval_citation_cmd() -> None:
     from clew.eval.run import eval_citation
 
     console.print(eval_citation())
+
+
+@reconcile_app.command("supersede")
+def reconcile_supersede_cmd() -> None:
+    """Link consecutive ownership claims (set valid_to + superseded_by)."""
+    from clew.db.session import write_session
+    from clew.ledger.supersession import reconcile_supersessions
+
+    with write_session() as session:
+        result = reconcile_supersessions(session)
+    console.print(result)
+
+
+@reconcile_app.command("contradictions")
+def reconcile_contradictions_cmd() -> None:
+    """Detect + materialize contradictions into the contradiction table."""
+    from clew.db.session import write_session
+    from clew.ledger.contradiction import materialize_contradictions
+
+    with write_session() as session:
+        result = materialize_contradictions(session)
+    console.print(result)
+
+
+@reconcile_app.command("all")
+def reconcile_all_cmd() -> None:
+    """Reconcile supersessions, then materialize remaining contradictions."""
+    from clew.db.session import write_session
+    from clew.ledger.contradiction import materialize_contradictions
+    from clew.ledger.supersession import reconcile_supersessions
+
+    with write_session() as session:
+        sup = reconcile_supersessions(session)
+        contra = materialize_contradictions(session)
+    console.print({"supersession": sup, "contradictions": contra})
 
 
 @app.command()

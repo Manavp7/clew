@@ -45,3 +45,30 @@ def session():
         sess.close()
         trans.rollback()
         connection.close()
+
+
+_LEDGER_TABLES = "evidence, claim, mention, contradiction, entity, document, source"
+
+
+@pytest.fixture
+def clean_session():
+    """Like ``session`` but starts from an empty ledger.
+
+    Truncates the ledger tables *inside* the test transaction so global queries
+    (supersession, contradiction detection) are isolated from any committed data.
+    The rollback at teardown restores all pre-existing rows (TRUNCATE is
+    transactional in Postgres), so the dev database is never disturbed.
+    """
+    from sqlalchemy.orm import Session
+
+    engine = get_write_engine()
+    connection = engine.connect()
+    trans = connection.begin()
+    connection.execute(text(f"TRUNCATE {_LEDGER_TABLES} RESTART IDENTITY CASCADE"))
+    sess = Session(bind=connection, expire_on_commit=False)
+    try:
+        yield sess
+    finally:
+        sess.close()
+        trans.rollback()
+        connection.close()

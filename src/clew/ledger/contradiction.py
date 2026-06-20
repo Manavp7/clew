@@ -1,23 +1,28 @@
 """Contradiction detection — emergent from the ledger, not a separate module.
 
-Two non-retracted claims with the same ``(subject, predicate)`` contradict when
-their valid intervals overlap and either:
+Two active (non-retracted, non-superseded) claims with the same
+``(subject, predicate)`` contradict when their valid intervals overlap and either:
 
-* **value_conflict** — different object / object_literal (e.g. stake 5.1% vs 9.2%
-  for the same period), or
+* **value_conflict** — different object / object_literal / value qualifier
+  (e.g. stake 5.1% vs 9.2% for the *same* period), or
 * **polarity_conflict** — one asserted, one negated.
 
-This is a pure query over the ledger; Phase 2 materialises results into the
-``contradiction`` table and adds resolution workflow.
+Valid intervals are treated as half-open ``[valid_from, valid_to)`` so that a
+claim and its supersessor (which share a boundary date) do not falsely conflict.
+
+:func:`detect_contradictions` is the pure query; :func:`materialize_contradictions`
+persists the results into the ``contradiction`` table (idempotent) for the
+resolution workflow.
 """
 
 from __future__ import annotations
 
 from dataclasses import dataclass
 
+from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from clew.db.models import Claim
+from clew.db.models import Claim, Contradiction
 from clew.ledger.asof import claims_asof
 
 # Qualifiers that carry the claim's "value" (so differing values = a conflict),
@@ -34,12 +39,14 @@ class ContradictionPair:
 
 
 def _intervals_overlap(a: Claim, b: Claim) -> bool:
-    # Treat None as open-ended (-inf .. +inf).
+    # Half-open intervals [from, to): None is open-ended (-inf .. +inf).
+    # Adjacent intervals that share a boundary (a_to == b_from) do NOT overlap,
+    # so a claim and its supersessor are not flagged as contradictions.
     a_from, a_to = a.valid_from, a.valid_to
     b_from, b_to = b.valid_from, b.valid_to
-    if a_to is not None and b_from is not None and a_to < b_from:
+    if a_to is not None and b_from is not None and a_to <= b_from:
         return False
-    if b_to is not None and a_from is not None and b_to < a_from:
+    if b_to is not None and a_from is not None and b_to <= a_from:
         return False
     return True
 
@@ -52,9 +59,18 @@ def _value_key(c: Claim):
     return (c.object_id, literal, value_quals)
 
 
-def detect_contradictions(session: Session, *, as_of=None) -> list[ContradictionPair]:
-    """Find contradicting claim pairs currently believed (as of ``as_of``)."""
+def detect_contradictions(
+    session: Session, *, as_of=None, include_superseded: bool = False
+) -> list[ContradictionPair]:
+    """Find contradicting claim pairs among active claims (as of ``as_of``).
+
+    Superseded claims (``superseded_by`` set) are historical and excluded by
+    default — supersession is precisely how stake-change "conflicts" get resolved.
+    """
     claims = claims_asof(session, as_of=as_of)
+    if not include_superseded:
+        claims = [c for c in claims if c.superseded_by is None]
+
     by_sp: dict[tuple[str, str], list[Claim]] = {}
     for c in claims:
         by_sp.setdefault((c.subject_id, c.predicate), []).append(c)
@@ -71,3 +87,31 @@ def detect_contradictions(session: Session, *, as_of=None) -> list[Contradiction
                 elif _value_key(a) != _value_key(b):
                     pairs.append(ContradictionPair(a, b, "value_conflict"))
     return pairs
+
+
+def materialize_contradictions(session: Session) -> dict:
+    """Persist detected contradictions into the ``contradiction`` table (idempotent).
+
+    Existing rows for the same unordered claim pair are not duplicated, so this
+    can be re-run after each ingest/reconcile cycle.
+    """
+    existing: set[frozenset[int]] = {
+        frozenset({row.claim_a, row.claim_b})
+        for row in session.execute(select(Contradiction)).scalars().all()
+    }
+    inserted = 0
+    for pair in detect_contradictions(session):
+        key = frozenset({pair.claim_a.id, pair.claim_b.id})
+        if key in existing:
+            continue
+        existing.add(key)
+        session.add(
+            Contradiction(
+                claim_a=pair.claim_a.id,
+                claim_b=pair.claim_b.id,
+                type=pair.type,
+                status="open",
+            )
+        )
+        inserted += 1
+    return {"inserted": inserted, "total_open_pairs": len(existing)}

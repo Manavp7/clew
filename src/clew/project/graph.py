@@ -7,7 +7,7 @@ time and is exported as Sigma.js-friendly JSON.
 
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import date, datetime
 
 import networkx as nx
 from sqlalchemy import select
@@ -17,10 +17,19 @@ from clew.db.models import Entity
 from clew.ledger.asof import claims_asof
 
 
-def build_graph(session: Session, *, as_of: datetime | None = None) -> nx.MultiDiGraph:
-    """Build a directed multigraph of entities + claim edges as of ``as_of``."""
+def build_graph(
+    session: Session, *, as_of: datetime | None = None, valid_on: date | None = "today"
+) -> nx.MultiDiGraph:
+    """Build a directed multigraph of entities + claim edges.
+
+    By default the graph reflects the **current world state** (valid as of today),
+    so superseded ownership stakes drop out and only the latest stake per
+    relationship is shown. Pass ``valid_on=None`` to include all valid intervals.
+    """
     graph = nx.MultiDiGraph()
-    claims = claims_asof(session, as_of=as_of)
+    if valid_on == "today":
+        valid_on = date.today()
+    claims = claims_asof(session, as_of=as_of, valid_on=valid_on)
 
     needed: set[str] = set()
     for c in claims:
