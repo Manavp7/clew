@@ -44,8 +44,8 @@ class RuleClaimExtractor:
         base_quals: dict = {}
         if parsed.event_date_value:
             base_quals["event_date"] = parsed.event_date_value
-        if parsed.cusip:
-            base_quals["cusip"] = parsed.cusip.surface
+        if parsed.cusip_value:
+            base_quals["cusip"] = parsed.cusip_value
 
         for subj in subjects:
             for filer in filers:

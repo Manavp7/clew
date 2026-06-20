@@ -16,9 +16,10 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass, field
 
+from clew.parse.cusip import extract_cusip
+
 # Percent like "19.17%", "11.0%", "9.99 %".
 _PCT_RE = re.compile(r"\d{1,3}(?:\.\d{1,3})?\s*%")
-_CUSIP_RE = re.compile(r"([0-9A-Z]{1,3}\s?[0-9A-Z]{2,5}\s?[0-9A-Z]{1,3})\s*\(CUSIP Number\)")
 _DATE_RE = re.compile(
     r"((?:January|February|March|April|May|June|July|August|September|October|November|December)"
     r"\s+\d{1,2},\s+\d{4})"
@@ -54,7 +55,9 @@ class PercentCandidate:
 @dataclass(slots=True)
 class ParsedFiling:
     issuer_name: Span | None = None
-    cusip: Span | None = None
+    cusip: Span | None = None  # span carries the source surface (round-trips)
+    cusip_value: str | None = None  # normalized, check-digit-validated 9-char CUSIP
+    cusip_valid: bool = False
     event_date: Span | None = None
     event_date_value: str | None = None
     percent_candidates: list[PercentCandidate] = field(default_factory=list)
@@ -88,15 +91,24 @@ def parse_filing(text: str) -> ParsedFiling:
 
     parsed.issuer_name = _find_before_label(text, "(Name of Issuer)")
 
-    mc = _CUSIP_RE.search(text)
-    if mc:
-        cusip = mc.group(1).strip()
-        parsed.cusip = Span(cusip, mc.start(1), mc.start(1) + len(cusip))
+    cs = extract_cusip(text)
+    if cs:
+        parsed.cusip = Span(cs.surface, cs.start, cs.end)
+        parsed.cusip_value = cs.cusip
+        parsed.cusip_valid = cs.valid
 
     md = _DATE_RE.search(text)
     if md:
         parsed.event_date = Span(md.group(1), md.start(1), md.end(1))
         parsed.event_date_value = md.group(1)
+
+    # Positions of the cover-table "Percent of Class" / row-13 labels: percentages
+    # near these are very likely the beneficial-ownership figure even when the
+    # surrounding prose lacks ownership keywords (cover-only filings).
+    row13_positions = [
+        m.start()
+        for m in re.finditer(r"Percent of Class Represented|Row \(1[13]\)|Percent of Class", text)
+    ]
 
     for m in _PCT_RE.finditer(text):
         ctx = text[max(0, m.start() - 80) : m.end() + 40]
@@ -105,6 +117,9 @@ def parse_filing(text: str) -> ParsedFiling:
             score += 1.0
         if _NEG.search(ctx):
             score -= 1.0
+        # Proximity to a cover-table percent-of-class label.
+        if any(abs(m.start() - p) <= 400 for p in row13_positions):
+            score += 0.8
         # Cover-table cell: percentage isolated in whitespace, often followed by a
         # footnote marker like "(2)". Strong signal of a row-13 ownership percent.
         before = text[max(0, m.start() - 30) : m.start()]
