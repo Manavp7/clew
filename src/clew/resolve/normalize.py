@@ -29,7 +29,11 @@ def normalized(name: str) -> str:
 
 
 def core(name: str) -> str:
-    toks = [t for t in normalized(name).split(" ") if t and t not in _SUFFIXES]
+    toks = [
+        t
+        for t in normalized(name).split(" ")
+        if t and t not in _SUFFIXES and len(t) > 1
+    ]
     return " ".join(toks) if toks else normalized(name)
 
 

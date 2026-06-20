@@ -26,6 +26,25 @@ _LABEL_MAP = {
 }
 
 
+# Generic boilerplate surfaces that are not real, resolvable entities.
+_STOPLIST = {
+    "sec", "securities and exchange commission", "securities & exchange commission",
+    "the issuer", "issuer", "the company", "company", "reporting person",
+    "reporting persons", "the reporting person", "the reporting persons",
+    "filing person", "filing persons", "common stock", "ordinary shares",
+    "schedule 13d", "schedule 13g", "washington", "d.c.", "united states",
+    "the securities", "the shares", "the commission",
+}
+
+
+def _is_noise(surface: str, ner_type: str) -> bool:
+    s = surface.strip().lower()
+    if ner_type in ("Organization", "Person"):
+        if s in _STOPLIST or len(s) < 3:
+            return True
+    return False
+
+
 @dataclass(slots=True)
 class MentionSpan:
     surface: str
@@ -73,12 +92,15 @@ def extract_mentions(
             if surface != ent["text"]:
                 # offset drift guard: skip rather than store a non-round-tripping span
                 continue
+            ner_type = _LABEL_MAP.get(ent["label"], ent["label"])
+            if _is_noise(surface, ner_type):
+                continue
             out.append(
                 MentionSpan(
                     surface=surface,
                     start=start,
                     end=end,
-                    ner_type=_LABEL_MAP.get(ent["label"], ent["label"]),
+                    ner_type=ner_type,
                     score=float(ent["score"]),
                 )
             )
