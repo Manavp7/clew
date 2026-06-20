@@ -51,14 +51,6 @@ def _intervals_overlap(a: Claim, b: Claim) -> bool:
     return True
 
 
-def _value_key(c: Claim):
-    """The comparable 'value' of a claim: object + value-bearing qualifiers."""
-    literal = None if c.object_literal is None else tuple(sorted(c.object_literal.items()))
-    quals = c.qualifiers or {}
-    value_quals = tuple((k, quals.get(k)) for k in VALUE_QUALIFIER_KEYS if k in quals)
-    return (c.object_id, literal, value_quals)
-
-
 def detect_contradictions(
     session: Session, *, as_of=None, include_superseded: bool = False
 ) -> list[ContradictionPair]:
@@ -71,12 +63,20 @@ def detect_contradictions(
     if not include_superseded:
         claims = [c for c in claims if c.superseded_by is None]
 
-    by_sp: dict[tuple[str, str], list[Claim]] = {}
+    # Group by the full relationship (subject, predicate, object). OWNS is
+    # non-functional — a filer owns many issuers — so a conflict requires the
+    # SAME (subject, predicate, object) asserting incompatible values/polarity
+    # over overlapping valid time, not merely a shared subject+predicate.
+    def _obj_key(c: Claim):
+        lit = None if c.object_literal is None else tuple(sorted(c.object_literal.items()))
+        return (c.object_id, lit)
+
+    by_spo: dict[tuple, list[Claim]] = {}
     for c in claims:
-        by_sp.setdefault((c.subject_id, c.predicate), []).append(c)
+        by_spo.setdefault((c.subject_id, c.predicate, _obj_key(c)), []).append(c)
 
     pairs: list[ContradictionPair] = []
-    for group in by_sp.values():
+    for group in by_spo.values():
         for i in range(len(group)):
             for j in range(i + 1, len(group)):
                 a, b = group[i], group[j]
@@ -84,9 +84,14 @@ def detect_contradictions(
                     continue
                 if a.polarity != b.polarity:
                     pairs.append(ContradictionPair(a, b, "polarity_conflict"))
-                elif _value_key(a) != _value_key(b):
+                elif _value_qualifiers(a) != _value_qualifiers(b):
                     pairs.append(ContradictionPair(a, b, "value_conflict"))
     return pairs
+
+
+def _value_qualifiers(c: Claim):
+    quals = c.qualifiers or {}
+    return tuple((k, quals.get(k)) for k in VALUE_QUALIFIER_KEYS if k in quals)
 
 
 def materialize_contradictions(session: Session) -> dict:
