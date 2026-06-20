@@ -21,6 +21,7 @@ eval_app = typer.Typer(help="Evaluation harness")
 reconcile_app = typer.Typer(help="Ledger reconciliation: supersession + contradictions")
 analytics_app = typer.Typer(help="Graph analytics (centrality, communities, interlocks)")
 er_app = typer.Typer(help="Entity-resolution learning loop (merge suggestions + review)")
+alerts_app = typer.Typer(help="Watchlists + alerts")
 
 app.add_typer(ingest_app, name="ingest")
 app.add_typer(extract_app, name="extract")
@@ -30,6 +31,7 @@ app.add_typer(eval_app, name="eval")
 app.add_typer(reconcile_app, name="reconcile")
 app.add_typer(analytics_app, name="analytics")
 app.add_typer(er_app, name="er")
+app.add_typer(alerts_app, name="alerts")
 
 
 @app.command()
@@ -269,6 +271,48 @@ def er_review_cmd(
             console.print(reject_suggestion(session, suggestion_id))
         else:
             console.print("[red]decision must be 'accept' or 'reject'[/]")
+
+
+@alerts_app.command("watch")
+def alerts_watch_cmd(
+    kind: str = typer.Argument(..., help="stake_threshold | new_claim | contradiction"),
+    target: str | None = typer.Option(None, help="Entity id to watch"),
+    threshold: float | None = typer.Option(None, help="Stake %% threshold"),
+    label: str | None = typer.Option(None),
+) -> None:
+    """Create a watch."""
+    from clew.db.models import Watch
+    from clew.db.session import write_session
+
+    with write_session() as session:
+        w = Watch(kind=kind, target=target, threshold=threshold, label=label)
+        session.add(w)
+        session.flush()
+        console.print({"id": w.id, "kind": kind, "target": target, "threshold": threshold})
+
+
+@alerts_app.command("run")
+def alerts_run_cmd() -> None:
+    """Scan the ledger and fire alerts for all watches (idempotent)."""
+    from clew.alerts.service import run_alerts
+
+    console.print(run_alerts())
+
+
+@alerts_app.command("list")
+def alerts_list_cmd(limit: int = typer.Option(20)) -> None:
+    """List recent alerts."""
+    from sqlalchemy import select
+
+    from clew.db.models import Alert
+    from clew.db.session import read_session
+
+    with read_session() as session:
+        rows = session.execute(
+            select(Alert).order_by(Alert.created_at.desc()).limit(limit)
+        ).scalars().all()
+        for a in rows:
+            console.print(f"  [{a.watch_id}] {a.message}")
 
 
 @app.command()

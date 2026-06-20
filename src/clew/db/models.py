@@ -274,6 +274,39 @@ class EntityMergeLog(Base):
     )
 
 
+class Watch(Base):
+    """A saved watch that generates alerts when the ledger changes."""
+
+    __tablename__ = "watch"
+
+    id: Mapped[int] = mapped_column(BigInteger, primary_key=True, autoincrement=True)
+    # kind: stake_threshold | new_claim | contradiction
+    kind: Mapped[str] = mapped_column(Text, nullable=False)
+    target: Mapped[str | None] = mapped_column(Text)  # entity id (or None for global)
+    threshold: Mapped[float | None] = mapped_column(Float)
+    label: Mapped[str | None] = mapped_column(Text)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), nullable=False
+    )
+
+
+class Alert(Base):
+    """A fired alert (deduped per watch by ``dedup_key``)."""
+
+    __tablename__ = "alert"
+    __table_args__ = (UniqueConstraint("watch_id", "dedup_key", name="uq_alert_dedup"),)
+
+    id: Mapped[int] = mapped_column(BigInteger, primary_key=True, autoincrement=True)
+    watch_id: Mapped[int] = mapped_column(ForeignKey("watch.id"), nullable=False)
+    message: Mapped[str] = mapped_column(Text, nullable=False)
+    dedup_key: Mapped[str] = mapped_column(Text, nullable=False)
+    payload: Mapped[dict] = mapped_column(JSONB, default=dict, server_default="{}")
+    seen: Mapped[bool] = mapped_column(Integer, default=0, server_default="0")
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), nullable=False
+    )
+
+
 class EvalRun(Base):
     """Versioned evaluation run — metrics over time vs pipeline/model version."""
 

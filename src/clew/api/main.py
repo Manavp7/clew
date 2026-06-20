@@ -273,6 +273,70 @@ def merge_suggestions(status: str = "open", limit: int = 100) -> dict:
         }
 
 
+@app.get("/watches")
+def list_watches() -> dict:
+    from clew.db.models import Watch
+
+    with read_session() as session:
+        rows = session.execute(select(Watch)).scalars().all()
+        return {
+            "watches": [
+                {
+                    "id": w.id,
+                    "kind": w.kind,
+                    "target": w.target,
+                    "threshold": w.threshold,
+                    "label": w.label,
+                }
+                for w in rows
+            ]
+        }
+
+
+@app.post("/watches")
+def create_watch(payload: dict) -> dict:
+    """Create a watch. Body: {kind, target?, threshold?, label?}. (Write endpoint.)"""
+    from clew.db.models import Watch
+    from clew.db.session import write_session
+
+    kind = payload.get("kind")
+    if kind not in {"stake_threshold", "new_claim", "contradiction"}:
+        raise HTTPException(400, "kind must be stake_threshold | new_claim | contradiction")
+    with write_session() as session:
+        w = Watch(
+            kind=kind,
+            target=payload.get("target"),
+            threshold=payload.get("threshold"),
+            label=payload.get("label"),
+        )
+        session.add(w)
+        session.flush()
+        return {"id": w.id, "kind": w.kind, "target": w.target, "threshold": w.threshold}
+
+
+@app.get("/alerts")
+def list_alerts(limit: int = 100) -> dict:
+    from clew.db.models import Alert
+
+    with read_session() as session:
+        rows = session.execute(
+            select(Alert).order_by(Alert.created_at.desc()).limit(limit)
+        ).scalars().all()
+        return {
+            "count": len(rows),
+            "alerts": [
+                {
+                    "id": a.id,
+                    "watch_id": a.watch_id,
+                    "message": a.message,
+                    "payload": a.payload,
+                    "created_at": a.created_at.isoformat() if a.created_at else None,
+                }
+                for a in rows
+            ],
+        }
+
+
 @app.get("/documents/{document_id}")
 def get_document(document_id: int) -> dict:
     with read_session() as session:

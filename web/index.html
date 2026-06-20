@@ -26,6 +26,11 @@
     .search-result { padding: 6px 8px; border-radius: 6px; cursor: pointer; }
     .search-result:hover { background: #eef2ff; }
     h3 { margin: 12px 0 4px; font-size: 13px; text-transform: uppercase; letter-spacing: .04em; color: #6b7280; }
+    button.nav { background: #1e293b; color: #cbd5e1; border: 1px solid #334155; border-radius: 6px; padding: 4px 10px; font-size: 12px; cursor: pointer; }
+    button.nav:hover { background: #334155; color: #fff; }
+    .alert { border-left: 3px solid #ef4444; background: #fef2f2; padding: 6px 8px; margin: 6px 0; font-size: 13px; border-radius: 4px; }
+    .item { padding: 6px 8px; border-bottom: 1px solid #f1f5f9; font-size: 13px; cursor: pointer; }
+    .item:hover { background: #f8fafc; }
   </style>
 </head>
 <body>
@@ -33,6 +38,11 @@
     <h1>clew</h1>
     <span class="sub">Canonical Intelligence Engine · 13D/13G beneficial ownership</span>
     <span class="sub" id="stats"></span>
+    <span style="flex:1"></span>
+    <button class="nav" onclick="showEntityTab()">Entity</button>
+    <button class="nav" onclick="loadAnalytics()">Analytics</button>
+    <button class="nav" onclick="loadAlerts()">Alerts</button>
+    <button class="nav" onclick="loadTrust()">Trust</button>
   </header>
   <div id="wrap">
     <div id="graph"></div>
@@ -50,14 +60,25 @@
     async function j(url) { const r = await fetch(API + url); if (!r.ok) throw new Error(r.status); return r.json(); }
 
     const palette = { Organization: '#2563eb', Person: '#db2777', Security: '#16a34a' };
+    const COMMUNITY_COLORS = ['#2563eb','#db2777','#16a34a','#f59e0b','#8b5cf6','#ef4444','#0891b2','#65a30d','#c026d3','#ea580c'];
+
+    async function communityColorMap() {
+      try {
+        const r = await j('/analytics/communities?limit=10');
+        const map = {};
+        r.communities.forEach((c, i) => c.members.forEach(m => { map[m.id] = COMMUNITY_COLORS[i % COMMUNITY_COLORS.length]; }));
+        return map;
+      } catch (_) { return {}; }
+    }
 
     async function loadGraph() {
       const data = await j('/graph');
+      const ccolor = await communityColorMap();
       graph = new graphology.Graph({ multi: true, type: 'directed' });
       data.nodes.forEach((n, i) => {
         graph.addNode(n.id, {
           label: n.label, x: Math.cos(i) * (1 + i % 7), y: Math.sin(i) * (1 + i % 5),
-          size: Math.max(4, 4 + (n.degree || 0) * 2), color: palette[n.type] || '#64748b',
+          size: Math.max(4, 4 + (n.degree || 0) * 2), color: ccolor[n.id] || palette[n.type] || '#64748b',
           entityType: n.type
         });
       });
@@ -107,6 +128,43 @@
       }
       html += `<h3>Claims as subject (${e.claims_as_subject.length})</h3>` + e.claims_as_subject.map(fmtClaim).join('');
       if (e.claims_as_object.length) html += `<h3>Claims as object (${e.claims_as_object.length})</h3>` + e.claims_as_object.map(fmtClaim).join('');
+      document.getElementById('detail').innerHTML = html;
+    }
+
+    function showEntityTab() {
+      document.getElementById('detail').innerHTML = '<p class="muted">Click a node, or search, to inspect an entity, its evidence-backed claims, and stake-change timeline.</p>';
+    }
+
+    async function loadAnalytics() {
+      const [s, central, locks] = await Promise.all([
+        j('/analytics/summary'), j('/analytics/central?metric=pagerank&limit=10'), j('/analytics/interlocks?limit=10')
+      ]);
+      let html = '<h2 style="margin:4px 0">Graph analytics</h2>';
+      html += `<div class="muted">${s.nodes} entities · ${s.edges} edges · ${s.communities} communities · ${s.interlocks} interlocks</div>`;
+      html += '<h3>Most central (PageRank)</h3>';
+      html += central.results.map(r => `<div class="item" onclick="showEntity('${r.id}')">${r.label} <span class="muted">${r.score.toFixed(4)}</span></div>`).join('');
+      html += '<h3>Ownership interlocks</h3>';
+      html += locks.interlocks.map(r => `<div class="item" onclick="showEntity('${r.id}')"><b>${r.label}</b> → ${r.issuers.map(i=>i.label).join(', ')}</div>`).join('');
+      document.getElementById('detail').innerHTML = html;
+    }
+
+    async function loadAlerts() {
+      const r = await j('/alerts?limit=50');
+      let html = '<h2 style="margin:4px 0">Alerts</h2>';
+      html += r.alerts.length ? r.alerts.map(a => `<div class="alert">${a.message}</div>`).join('')
+        : '<p class="muted">No alerts. Create a watch (e.g. stake_threshold) and run <code>clew alerts run</code>.</p>';
+      document.getElementById('detail').innerHTML = html;
+    }
+
+    async function loadTrust() {
+      const [contra, sug] = await Promise.all([ j('/contradictions?limit=30'), j('/merge-suggestions?limit=30') ]);
+      let html = '<h2 style="margin:4px 0">Trust layer</h2>';
+      html += `<h3>Contradictions (${contra.count})</h3>`;
+      html += contra.count ? contra.contradictions.map(c => `<div class="item">${c.type}: <b>${c.claim_a.subject}</b> ${c.claim_a.stake_pct ?? ''}% vs ${c.claim_b.stake_pct ?? ''}% → ${c.claim_a.object}</div>`).join('')
+        : '<p class="muted">No open contradictions (stake changes resolved by supersession).</p>';
+      html += `<h3>Merge suggestions (${sug.count})</h3>`;
+      html += sug.count ? sug.suggestions.map(x => `<div class="item">${x.entity_a.name} ⇄ ${x.entity_b.name} <span class="muted">${x.score}</span></div>`).join('')
+        : '<p class="muted">No open merge suggestions. Run <code>clew er suggest</code>.</p>';
       document.getElementById('detail').innerHTML = html;
     }
 

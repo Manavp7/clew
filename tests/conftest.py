@@ -47,7 +47,10 @@ def session():
         connection.close()
 
 
-_LEDGER_TABLES = "evidence, claim, mention, contradiction, entity, document, source"
+_LEDGER_TABLES = (
+    "alert, watch, merge_suggestion, er_decision, entity_merge_log, "
+    "evidence, claim, mention, contradiction, entity, document, source"
+)
 
 
 @pytest.fixture
