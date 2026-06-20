@@ -52,5 +52,40 @@ def ingest_edgar(
     console.print(summary)
 
 
+@extract_app.command("mentions")
+def extract_mentions_cmd(
+    threshold: float = typer.Option(0.5, help="GLiNER confidence threshold"),
+    limit: int | None = typer.Option(None, help="Limit number of documents"),
+) -> None:
+    """Detect mentions (GLiNER) for ingested documents."""
+    from clew.extract.service import run_mentions
+
+    console.print("[bold]Detecting mentions[/] ...")
+    console.print(run_mentions(threshold=threshold, limit=limit))
+
+
+@extract_app.command("claims")
+def extract_claims_cmd(
+    use_llm: bool | None = typer.Option(None, help="Force LLM on/off (default: auto)"),
+    limit: int | None = typer.Option(None, help="Limit number of documents"),
+) -> None:
+    """Extract + write claims (rule baseline + optional LLM)."""
+    from clew.extract.service import run_claims
+
+    console.print("[bold]Extracting claims[/] ...")
+    console.print(run_claims(use_llm=use_llm, limit=limit))
+
+
+@resolve_app.command("run")
+def resolve_run_cmd(
+    backend: str = typer.Option("default", help="ER backend: default | splink"),
+) -> None:
+    """Resolve mentions + headers into canonical entities."""
+    from clew.resolve.service import run_resolution
+
+    console.print("[bold]Resolving entities[/] ...")
+    console.print(run_resolution(backend=backend))
+
+
 if __name__ == "__main__":
     app()
