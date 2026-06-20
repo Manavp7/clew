@@ -41,6 +41,11 @@ class Settings(BaseSettings):
     embedding_model: str = "local:Qwen/Qwen3-Embedding-0.6B"
     embedding_dim: int = 1024
 
+    # Vector backend: "pgvector" (default; lives in Postgres) or "qdrant"
+    # (embedded, on-disk via qdrant-client — no server, works without Docker).
+    vector_backend: str = "pgvector"
+    qdrant_path: str = "data/qdrant"
+
     # --- SEC EDGAR ---
     sec_user_agent: str = "clew-research research@example.com"
 

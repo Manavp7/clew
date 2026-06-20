@@ -53,3 +53,13 @@ live claim extraction.
 
 Postgres 16 + pgvector · SQLAlchemy/Alembic · `uv` · GLiNER · Splink · NetworkX ·
 FastAPI · Vercel AI Gateway (provider-agnostic LLM access).
+
+### Pluggable backends & deferred infra
+
+- **Vector store** (`CLEW_VECTOR_BACKEND`): `pgvector` (default, in Postgres) or
+  `qdrant` (embedded, on-disk via `qdrant-client` — no server).
+- **Graph** is a NetworkX projection (Neo4j intentionally not used yet; the ledger
+  is the source of truth and the graph is rebuildable).
+- **Orchestration**: an idempotent `clew` CLI pipeline. **Temporal is deferred** —
+  it needs a server cluster and is unnecessary at single-machine scale; it's the
+  future durable-workflow upgrade when scale/throughput demands it.
