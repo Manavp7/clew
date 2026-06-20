@@ -79,12 +79,14 @@
     function fmtClaim(c) {
       const obj = c.object ? c.object.name : (c.object_literal ? JSON.stringify(c.object_literal) : '—');
       const stake = c.qualifiers && c.qualifiers.stake_pct != null ? `<span class="stake">${c.qualifiers.stake_pct}%</span>` : '';
+      const superseded = c.superseded_by ? ' <span class="pill" style="background:#fef3c7;color:#92400e">superseded</span>' : '';
+      const period = `${c.valid_from || '?'} → ${c.valid_to || 'now'}`;
       const ev = (c.evidence || []).map(e =>
         `<div class="snippet">“${e.snippet}” <span class="muted">— doc ${e.document_id} [${e.char_start}:${e.char_end}]</span></div>`).join('');
       return `<div class="claim">
-        <div class="row"><span class="rel">${c.predicate}</span> ${stake}</div>
+        <div class="row"><span class="rel">${c.predicate}</span> ${stake}${superseded}</div>
         <div>→ <b>${obj}</b></div>
-        <div class="muted">valid_from ${c.valid_from || '?'} · conf ${c.confidence} · ${c.extractor}</div>
+        <div class="muted">valid ${period} · conf ${c.confidence} · ${c.extractor}</div>
         ${ev}</div>`;
     }
 
@@ -97,7 +99,11 @@
         <div class="muted">${e.id} · ${e.type}${e.aliases.length ? ' · aka ' + e.aliases.slice(0,3).join(', ') : ''}</div>`;
       if (tl && tl.points.length) {
         html += '<h3>Stake-change timeline</h3>';
-        html += tl.points.map(p => `<div class="row"><span class="muted">${p.valid_from || '?'}</span> → <span class="stake">${p.stake_pct != null ? p.stake_pct + '%' : '—'}</span> <span class="muted">(${p.object || ''})</span></div>`).join('');
+        html += tl.points.map(p => {
+          const end = p.valid_to ? p.valid_to : 'now';
+          const current = !p.valid_to ? ' <span class="pill">current</span>' : '';
+          return `<div class="row"><span class="muted">${p.valid_from || '?'} → ${end}</span> : <span class="stake">${p.stake_pct != null ? p.stake_pct + '%' : '—'}</span>${current}</div>`;
+        }).join('');
       }
       html += `<h3>Claims as subject (${e.claims_as_subject.length})</h3>` + e.claims_as_subject.map(fmtClaim).join('');
       if (e.claims_as_object.length) html += `<h3>Claims as object (${e.claims_as_object.length})</h3>` + e.claims_as_object.map(fmtClaim).join('');
