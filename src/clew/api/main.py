@@ -205,6 +205,42 @@ def list_contradictions(status: str | None = None, limit: int = 100) -> dict:
         }
 
 
+@app.get("/analytics/summary")
+def analytics_summary() -> dict:
+    from clew.analytics.graph_metrics import summary
+
+    with read_session() as session:
+        g = build_graph(session)
+    return summary(g)
+
+
+@app.get("/analytics/central")
+def analytics_central(metric: str = "pagerank", limit: int = 20) -> dict:
+    from clew.analytics.graph_metrics import centrality
+
+    with read_session() as session:
+        g = build_graph(session)
+    return {"metric": metric, "results": centrality(g, metric=metric, limit=limit)}
+
+
+@app.get("/analytics/communities")
+def analytics_communities(limit: int = 25) -> dict:
+    from clew.analytics.graph_metrics import communities
+
+    with read_session() as session:
+        g = build_graph(session)
+    return {"communities": communities(g, limit=limit)}
+
+
+@app.get("/analytics/interlocks")
+def analytics_interlocks(min_targets: int = 2, limit: int = 50) -> dict:
+    from clew.analytics.graph_metrics import interlocks
+
+    with read_session() as session:
+        g = build_graph(session)
+    return {"interlocks": interlocks(g, min_targets=min_targets, limit=limit)}
+
+
 @app.get("/documents/{document_id}")
 def get_document(document_id: int) -> dict:
     with read_session() as session:

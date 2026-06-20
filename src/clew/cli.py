@@ -19,6 +19,7 @@ resolve_app = typer.Typer(help="Entity resolution")
 project_app = typer.Typer(help="Rebuild projections from the ledger")
 eval_app = typer.Typer(help="Evaluation harness")
 reconcile_app = typer.Typer(help="Ledger reconciliation: supersession + contradictions")
+analytics_app = typer.Typer(help="Graph analytics (centrality, communities, interlocks)")
 
 app.add_typer(ingest_app, name="ingest")
 app.add_typer(extract_app, name="extract")
@@ -26,6 +27,7 @@ app.add_typer(resolve_app, name="resolve")
 app.add_typer(project_app, name="project")
 app.add_typer(eval_app, name="eval")
 app.add_typer(reconcile_app, name="reconcile")
+app.add_typer(analytics_app, name="analytics")
 
 
 @app.command()
@@ -193,6 +195,50 @@ def reconcile_all_cmd() -> None:
         sup = reconcile_supersessions(session)
         contra = materialize_contradictions(session)
     console.print({"supersession": sup, "contradictions": contra})
+
+
+@analytics_app.command("summary")
+def analytics_summary_cmd() -> None:
+    """Graph-wide analytics summary (nodes/edges/components/communities/interlocks)."""
+    from clew.analytics.graph_metrics import summary
+    from clew.db.session import read_session
+    from clew.project.graph import build_graph
+
+    with read_session() as session:
+        g = build_graph(session)
+    console.print(summary(g))
+
+
+@analytics_app.command("central")
+def analytics_central_cmd(
+    metric: str = typer.Option("pagerank", help="pagerank | degree | betweenness"),
+    limit: int = typer.Option(20),
+) -> None:
+    """Most central entities in the ownership graph."""
+    from clew.analytics.graph_metrics import centrality
+    from clew.db.session import read_session
+    from clew.project.graph import build_graph
+
+    with read_session() as session:
+        g = build_graph(session)
+    for r in centrality(g, metric=metric, limit=limit):
+        console.print(f"  {r['score']:.5f}  {r['label']} ({r['type']})")
+
+
+@analytics_app.command("interlocks")
+def analytics_interlocks_cmd(
+    min_targets: int = typer.Option(2), limit: int = typer.Option(50)
+) -> None:
+    """Holders connected to multiple issuers (ownership interlocks)."""
+    from clew.analytics.graph_metrics import interlocks
+    from clew.db.session import read_session
+    from clew.project.graph import build_graph
+
+    with read_session() as session:
+        g = build_graph(session)
+    for r in interlocks(g, min_targets=min_targets, limit=limit):
+        issuers = [i["label"] for i in r["issuers"]]
+        console.print(f"  {r['issuer_count']}  {r['label']} -> {issuers}")
 
 
 @app.command()
