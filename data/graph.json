@@ -1,63 +1,2941 @@
 {
   "nodes": [
     {
-      "id": "ORG_000032",
+      "id": "ORG_000140",
       "label": "Vertical Aerospace Ltd.",
       "type": "Organization",
       "cik": "1867102",
       "degree": 1
     },
     {
-      "id": "ORG_000048",
-      "label": "Murano Global Investments PLC",
+      "id": "ORG_001000",
+      "label": "SABA CAPITAL MANAGEMENT",
       "type": "Organization",
-      "cik": "1988776",
+      "cik": "1510281",
+      "degree": 7
+    },
+    {
+      "id": "ORG_001167",
+      "label": "Global Infrastructure Investors III, LLC",
+      "type": "Organization",
+      "cik": "1747194",
       "degree": 1
     },
     {
-      "id": "ORG_000049",
-      "label": "HCM Investor Holdings, LLC",
+      "id": "ORG_001765",
+      "label": "Hess Investments North Dakota LLC",
       "type": "Organization",
-      "cik": "1864019",
+      "cik": "1702361",
       "degree": 1
     },
     {
-      "id": "ORG_000066",
+      "id": "ORG_001766",
+      "label": "GIP II Blue Holding, L.P.",
+      "type": "Organization",
+      "cik": "1877329",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000363",
+      "label": "Aeries Technology, Inc.",
+      "type": "Organization",
+      "cik": "1853044",
+      "degree": 4
+    },
+    {
+      "id": "ORG_001507",
+      "label": "Northern Star Investment Corp. IV",
+      "type": "Organization",
+      "cik": "1835814",
+      "degree": 1
+    },
+    {
+      "id": "ORG_002199",
+      "label": "CHINA LIBERAL EDUCATION HOLDINGS LIMITED",
+      "type": "Organization",
+      "cik": "1775085",
+      "degree": 1
+    },
+    {
+      "id": "ORG_002200",
+      "label": "Ever Alpha Global Limited",
+      "type": "Organization",
+      "cik": "1845410",
+      "degree": 1
+    },
+    {
+      "id": "ORG_002203",
+      "label": "Fidelity Multi-Strategy Credit Fund",
+      "type": "Organization",
+      "cik": "1949594",
+      "degree": 1
+    },
+    {
+      "id": "ORG_002206",
+      "label": "FMR LLC",
+      "type": "Organization",
+      "cik": "315066",
+      "degree": 1
+    },
+    {
+      "id": "ORG_002226",
+      "label": "US ENERGY CORP",
+      "type": "Organization",
+      "cik": "101594",
+      "degree": 2
+    },
+    {
+      "id": "ORG_002234",
+      "label": "Energy Holding Corp",
+      "type": "Organization",
+      "cik": "1602952",
+      "degree": 1
+    },
+    {
+      "id": "ORG_002236",
+      "label": "Caligan Partners LP",
+      "type": "Organization",
+      "cik": "1727492",
+      "degree": 1
+    },
+    {
+      "id": "ORG_002239",
+      "label": "Sixth Street Lending Partners Note Issuer, LLC",
+      "type": "Organization",
+      "cik": "2002135",
+      "degree": 1
+    },
+    {
+      "id": "PER_001545",
+      "label": "Lau Wai Ming",
+      "type": "Person",
+      "cik": "2025014",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000168",
       "label": "ARS Pharmaceuticals, Inc.",
       "type": "Organization",
       "cik": "1671858",
       "degree": 1
     },
     {
-      "id": "ORG_000067",
-      "label": "RA CAPITAL MANAGEMENT, L.P.",
+      "id": "ORG_001508",
+      "label": "Blubuzzard, Inc.",
       "type": "Organization",
-      "cik": "1346824",
+      "cik": "1765826",
       "degree": 1
     },
     {
-      "id": "PER_000078",
+      "id": "ORG_001509",
+      "label": "Lykato Group, LLC",
+      "type": "Organization",
+      "cik": "1792243",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001542",
+      "label": "Citi Trends, Inc.",
+      "type": "Organization",
+      "cik": "1318484",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001543",
+      "label": "Deswell Industries, Inc.",
+      "type": "Organization",
+      "cik": "946936",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001549",
+      "label": "Greenbrook TMS Inc.",
+      "type": "Organization",
+      "cik": "1735948",
+      "degree": 2
+    },
+    {
+      "id": "ORG_001551",
+      "label": "Greybrook Health",
+      "type": "Organization",
+      "cik": "1910407",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001556",
+      "label": "Madryn Asset Management, LP",
+      "type": "Organization",
+      "cik": "1787423",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001590",
+      "label": "Tax-Free\nFixed Income Fund IV for Puerto Rico Residents, Inc.",
+      "type": "Organization",
+      "cik": "1847305",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001592",
+      "label": "Ocean Capital LLC",
+      "type": "Organization",
+      "cik": "1838395",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001596",
+      "label": "Performance Shipping Inc.",
+      "type": "Organization",
+      "cik": "1481241",
+      "degree": 2
+    },
+    {
+      "id": "ORG_001597",
+      "label": "Sphinx Investment Corp.",
+      "type": "Organization",
+      "cik": "1990966",
+      "degree": 2
+    },
+    {
+      "id": "ORG_001627",
+      "label": "Scienjoy Holding Corporation",
+      "type": "Organization",
+      "cik": "1753673",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001628",
+      "label": "Wolter Global Investment Limited",
+      "type": "Organization",
+      "cik": "1919419",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001638",
+      "label": "Sixth Street Lending Partners Note Issuer, LLC",
+      "type": "Organization",
+      "cik": "1925309",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001670",
+      "label": "Shimmick                                                 \n  Corporation",
+      "type": "Organization",
+      "cik": "1887944",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001677",
+      "label": "Entrada Therapeutics, Inc.",
+      "type": "Organization",
+      "cik": "1689375",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001679",
+      "label": "Global Net Lease, Inc.",
+      "type": "Organization",
+      "cik": "1526113",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001680",
+      "label": "Bellevue Capital Partners",
+      "type": "Organization",
+      "cik": "1907225",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001688",
+      "label": "Sharecare, Inc.",
+      "type": "Organization",
+      "cik": "1816233",
+      "degree": 2
+    },
+    {
+      "id": "ORG_001708",
+      "label": "ClearSign Technologies Corporation",
+      "type": "Organization",
+      "cik": "1434524",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001710",
+      "label": "clirSPV LLC",
+      "type": "Organization",
+      "cik": "1747304",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001714",
+      "label": "Destra Multi-Alternative Fund",
+      "type": "Organization",
+      "cik": "1523289",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001722",
+      "label": "Global Clean Energy Holdings, Inc.",
+      "type": "Organization",
+      "cik": "748790",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001723",
+      "label": "ExxonMobil Renewables",
+      "type": "Organization",
+      "cik": "1926017",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001759",
+      "label": "Hess Midstream LP",
+      "type": "Organization",
+      "cik": "1789832",
+      "degree": 2
+    },
+    {
+      "id": "ORG_001776",
+      "label": "Mallinckrodt plc",
+      "type": "Organization",
+      "cik": "1567892",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001778",
+      "label": "Hein Park Capital Management LP",
+      "type": "Organization",
+      "cik": "1826937",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001787",
+      "label": "nCino, Inc.",
+      "type": "Organization",
+      "cik": "1902733",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001793",
+      "label": "Insight Venture Associates IX, Ltd.",
+      "type": "Organization",
+      "cik": "1710959",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001805",
+      "label": "P3 Health Partners, Inc.",
+      "type": "Organization",
+      "cik": "1832511",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001807",
+      "label": "Leavitt Equity Partners II, L.P.",
+      "type": "Organization",
+      "cik": "1720920",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001815",
+      "label": "System1, Inc.",
+      "type": "Organization",
+      "cik": "1805833",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001816",
+      "label": "Lone Star Friends Trust",
+      "type": "Organization",
+      "cik": "1909643",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001826",
+      "label": "Nanophase Technologies Corporation",
+      "type": "Organization",
+      "cik": "883107",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001834",
+      "label": "Ventyx Biosciences, Inc.",
+      "type": "Organization",
+      "cik": "1851194",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001836",
+      "label": "NSV Investments I, L.P.",
+      "type": "Organization",
+      "cik": "1889184",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001852",
+      "label": "Acuitas Group Holdings, LLC",
+      "type": "Organization",
+      "cik": "1797168",
+      "degree": 2
+    },
+    {
+      "id": "ORG_001853",
+      "label": "Ontrak, Inc.",
+      "type": "Organization",
+      "cik": "1136174",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001856",
+      "label": "BIOVIE INC.",
+      "type": "Organization",
+      "cik": "1580149",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001861",
+      "label": "Barnes & Noble Education, Inc.",
+      "type": "Organization",
+      "cik": "1634117",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001883",
+      "label": "ClearBridge MLP and Midstream Fund Inc.",
+      "type": "Organization",
+      "cik": "1488775",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001884",
+      "label": "ProKidney Corp.",
+      "type": "Organization",
+      "cik": "1850270",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001896",
+      "label": "Control Empresarial de Capitales S.A. de C.V.",
+      "type": "Organization",
+      "cik": "1273693",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001904",
+      "label": "NeuroBo Pharmaceuticals, Inc.",
+      "type": "Organization",
+      "cik": "1638287",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001905",
+      "label": "DONG-A ST CO., LTD.",
+      "type": "Organization",
+      "cik": "1799260",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001906",
+      "label": "TECNOGLASS                                         \n  INC.",
+      "type": "Organization",
+      "cik": "1534675",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001914",
+      "label": "Koninklijke\nPhilips NV",
+      "type": "Organization",
+      "cik": "313216",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001993",
+      "label": "Thunder Power Holdings, Inc.",
+      "type": "Organization",
+      "cik": "1912582",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001995",
+      "label": "Feutune Light Sponsor LLC",
+      "type": "Organization",
+      "cik": "1912588",
+      "degree": 1
+    },
+    {
+      "id": "ORG_002006",
+      "label": "Nobility Homes, Inc.",
+      "type": "Organization",
+      "cik": "72205",
+      "degree": 1
+    },
+    {
+      "id": "ORG_002008",
+      "label": "GAMCO Investors, Inc.",
+      "type": "Organization",
+      "cik": "807249",
+      "degree": 1
+    },
+    {
+      "id": "ORG_002092",
+      "label": "Icahn Enterprises L.P.",
+      "type": "Organization",
+      "cik": "813762",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000253",
+      "label": "Euronav NV",
+      "type": "Organization",
+      "cik": "1604481",
+      "degree": 1
+    },
+    {
+      "id": "ORG_002112",
+      "label": "Tortoise Midstream Energy Fund, Inc.",
+      "type": "Organization",
+      "cik": "1490286",
+      "degree": 1
+    },
+    {
+      "id": "ORG_002113",
+      "label": "UAS Drone Corp.",
+      "type": "Organization",
+      "cik": "1638911",
+      "degree": 1
+    },
+    {
+      "id": "ORG_002114",
+      "label": "Y.D More Investments Ltd.",
+      "type": "Organization",
+      "cik": "1870364",
+      "degree": 1
+    },
+    {
+      "id": "ORG_002165",
+      "label": "ALIMERA SCIENCES INC",
+      "type": "Organization",
+      "cik": "1267602",
+      "degree": 1
+    },
+    {
+      "id": "ORG_002172",
+      "label": "ASSEMBLY BIOSCIENCES, INC.",
+      "type": "Organization",
+      "cik": "1426800",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000152",
+      "label": "Murano Global Investments PLC",
+      "type": "Organization",
+      "cik": "1988776",
+      "degree": 2
+    },
+    {
+      "id": "ORG_000153",
+      "label": "HCM Investor Holdings, LLC",
+      "type": "Organization",
+      "cik": "1864019",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000169",
+      "label": "RA CAPITAL MANAGEMENT, L.P.",
+      "type": "Organization",
+      "cik": "1346824",
+      "degree": 2
+    },
+    {
+      "id": "ORG_000181",
+      "label": "AUGUSTA GOLD CORP.",
+      "type": "Organization",
+      "cik": "1448597",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000182",
+      "label": "Augusta Investments",
+      "type": "Organization",
+      "cik": "1829144",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000186",
+      "label": "Agrify Corporation",
+      "type": "Organization",
+      "cik": "1800637",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000199",
+      "label": "Battalion Oil Corporation",
+      "type": "Organization",
+      "cik": "1282648",
+      "degree": 3
+    },
+    {
+      "id": "ORG_000201",
+      "label": "Gen IV Investment Opportunities, LLC",
+      "type": "Organization",
+      "cik": "1697367",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000210",
+      "label": "Luminus Management, LLC",
+      "type": "Organization",
+      "cik": "1279151",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000221",
+      "label": "Brookfield Oaktree Holdings, LLC",
+      "type": "Organization",
+      "cik": "1403528",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000233",
+      "label": "Nuvalent, Inc.",
+      "type": "Organization",
+      "cik": "1861560",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000234",
+      "label": "Bain Capital Life Sciences Fund II, L.P.",
+      "type": "Organization",
+      "cik": "1773187",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000239",
+      "label": "Cardlytics, Inc.",
+      "type": "Organization",
+      "cik": "1666071",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000241",
+      "label": "CAS Investment Partners, LLC",
+      "type": "Organization",
+      "cik": "1697591",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000271",
+      "label": "Genetron Holdings Limited",
+      "type": "Organization",
+      "cik": "1782594",
+      "degree": 2
+    },
+    {
+      "id": "ORG_000278",
+      "label": "Tianjin Kangyue Business Management Partnership (Limited Partnership)",
+      "type": "Organization",
+      "cik": "1911077",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000334",
+      "label": "INDIVIOR PLC",
+      "type": "Organization",
+      "cik": "1625297",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000336",
+      "label": "Two Seas Capital LP",
+      "type": "Organization",
+      "cik": "1823138",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000348",
+      "label": "PIMCO\nFlexible Real Estate Income Fund",
+      "type": "Organization",
+      "cik": "1896329",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000354",
+      "label": "Nkarta, Inc.",
+      "type": "Organization",
+      "cik": "1787400",
+      "degree": 4
+    },
+    {
+      "id": "ORG_000356",
+      "label": "Samsara BioCapital, L.P.",
+      "type": "Organization",
+      "cik": "1699737",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000378",
+      "label": "Sit Investment Associates, Inc.",
+      "type": "Organization",
+      "cik": "769317",
+      "degree": 4
+    },
+    {
+      "id": "ORG_000379",
+      "label": "Invesco Pennsylvania Value Municipal Income Trust (VPV)",
+      "type": "Organization",
+      "cik": "895528",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000390",
+      "label": "PW Partners Atlas Fund IV LP",
+      "type": "Organization",
+      "cik": "2014483",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000411",
+      "label": "Uxin Limited",
+      "type": "Organization",
+      "cik": "1729173",
+      "degree": 3
+    },
+    {
+      "id": "ORG_000432",
+      "label": "Q32 Bio Inc.",
+      "type": "Organization",
+      "cik": "1661998",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000433",
+      "label": "OrbiMed Advisors",
+      "type": "Organization",
+      "cik": "1055951",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000467",
+      "label": "ANTOFAGASTA PLC/FI",
+      "type": "Organization",
+      "cik": "1092629",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000495",
+      "label": "OceanPal Inc.",
+      "type": "Organization",
+      "cik": "1869467",
+      "degree": 6
+    },
+    {
+      "id": "ORG_000498",
+      "label": "Abra Marinvest Inc.",
+      "type": "Organization",
+      "cik": "1771346",
+      "degree": 2
+    },
+    {
+      "id": "ORG_000501",
+      "label": "Vista Credit Strategic Lending Corp.",
+      "type": "Organization",
+      "cik": "1919369",
+      "degree": 2
+    },
+    {
+      "id": "ORG_000534",
+      "label": "Anamar Investments Inc.",
+      "type": "Organization",
+      "cik": "1770440",
+      "degree": 2
+    },
+    {
+      "id": "ORG_000538",
+      "label": "IGM Biosciences, Inc.",
+      "type": "Organization",
+      "cik": "1496323",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000542",
+      "label": "Baker Bros. Advisors LP",
+      "type": "Organization",
+      "cik": "1263508",
+      "degree": 3
+    },
+    {
+      "id": "ORG_000558",
+      "label": "Biglari Holdings Inc.",
+      "type": "Organization",
+      "cik": "1726173",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000561",
+      "label": "BIGLARI CAPITAL CORP.",
+      "type": "Organization",
+      "cik": "1334429",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000565",
+      "label": "Cartesian Therapeutics, Inc.",
+      "type": "Organization",
+      "cik": "1453687",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000576",
+      "label": "DWS Municipal Income Trust",
+      "type": "Organization",
+      "cik": "839533",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000577",
+      "label": "DWS Strategic Municipal Income Trust",
+      "type": "Organization",
+      "cik": "846596",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000601",
+      "label": "Eve One Fund II L.P.",
+      "type": "Organization",
+      "cik": "1852124",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000604",
+      "label": "FRANKLIN BSP PRIVATE CREDIT FUND",
+      "type": "Organization",
+      "cik": "1794041",
+      "degree": 2
+    },
+    {
+      "id": "ORG_000606",
+      "label": "Franklin Resources, Inc.",
+      "type": "Organization",
+      "cik": "38777",
+      "degree": 2
+    },
+    {
+      "id": "ORG_000667",
+      "label": "KKR FS Income Trust Select",
+      "type": "Organization",
+      "cik": "1975736",
+      "degree": 3
+    },
+    {
+      "id": "ORG_000673",
+      "label": "Franklin Square Holdings, L.P.",
+      "type": "Organization",
+      "cik": "1697432",
+      "degree": 2
+    },
+    {
+      "id": "ORG_000681",
+      "label": "GSK plc",
+      "type": "Organization",
+      "cik": "1131399",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000720",
+      "label": "Joy Capital Opportunity, L.P.",
+      "type": "Organization",
+      "cik": "1757920",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000723",
+      "label": "KKR Alternative Assets LLC",
+      "type": "Organization",
+      "cik": "1820655",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000732",
+      "label": "New Enterprise Associates",
+      "type": "Organization",
+      "cik": "1629794",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000771",
+      "label": "Spruce\nBiosciences, Inc.",
+      "type": "Organization",
+      "cik": "1683553",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000774",
+      "label": "Novo Holdings A/S",
+      "type": "Organization",
+      "cik": "1388325",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000777",
+      "label": "Tuscany Shipping Corp.",
+      "type": "Organization",
+      "cik": "1823719",
+      "degree": 2
+    },
+    {
+      "id": "ORG_000779",
+      "label": "Trilogy International Partners Inc.",
+      "type": "Organization",
+      "cik": "1689382",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000782",
+      "label": "SG Enterprises II, LLC",
+      "type": "Organization",
+      "cik": "1698270",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000792",
+      "label": "Fund 1 Investments, LLC",
+      "type": "Organization",
+      "cik": "1959730",
+      "degree": 2
+    },
+    {
+      "id": "ORG_000794",
+      "label": "Bitdeer Technologies Group",
+      "type": "Organization",
+      "cik": "1899123",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000795",
+      "label": "Shinning Stone Invest Co., Ltd.",
+      "type": "Organization",
+      "cik": "1977747",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000798",
+      "label": "Cogent Biosciences, Inc.",
+      "type": "Organization",
+      "cik": "1622229",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000801",
+      "label": "Fairmount Funds Management LLC",
+      "type": "Organization",
+      "cik": "1802528",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000806",
+      "label": "Consolidated Communications Holdings, Inc.",
+      "type": "Organization",
+      "cik": "1304421",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000809",
+      "label": "Searchlight III CVL",
+      "type": "Organization",
+      "cik": "1827982",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000813",
+      "label": "Silence Therapeutics plc",
+      "type": "Organization",
+      "cik": "1479615",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000824",
+      "label": "Herzfeld Caribbean Basin Fund, Inc.",
+      "type": "Organization",
+      "cik": "880406",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000825",
+      "label": "Northern Star Investment Corp. III",
+      "type": "Organization",
+      "cik": "1835817",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000832",
+      "label": "Masimo Corporation",
+      "type": "Organization",
+      "cik": "937556",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000842",
+      "label": "Politan Capital Management LP",
+      "type": "Organization",
+      "cik": "1885245",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000846",
+      "label": "Steel Partners Holdings L.P.",
+      "type": "Organization",
+      "cik": "1452857",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000849",
+      "label": "STEEL PARTNERS, LTD.",
+      "type": "Organization",
+      "cik": "1504325",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000861",
+      "label": "VEP Group, LLC",
+      "type": "Organization",
+      "cik": "1216495",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000868",
+      "label": "Comscore, Inc.",
+      "type": "Organization",
+      "cik": "1158172",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000870",
+      "label": "180 Degree Capital",
+      "type": "Organization",
+      "cik": "893739",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000873",
+      "label": "DIRTT Environmental Solutions Ltd.",
+      "type": "Organization",
+      "cik": "1340476",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000875",
+      "label": "22NW Fund",
+      "type": "Organization",
+      "cik": "1640809",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000886",
+      "label": "AgeX Therapeutics, Inc.",
+      "type": "Organization",
+      "cik": "1708599",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000888",
+      "label": "Juvenescence Limited",
+      "type": "Organization",
+      "cik": "1724307",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000892",
+      "label": "Ambase\nCorp.",
+      "type": "Organization",
+      "cik": "20639",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000896",
+      "label": "Camac Fund",
+      "type": "Organization",
+      "cik": "1516478",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000898",
+      "label": "FaZe Holdings Inc.",
+      "type": "Organization",
+      "cik": "1839360",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000900",
+      "label": "B. Riley Financial, Inc.",
+      "type": "Organization",
+      "cik": "1464790",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000931",
+      "label": "Team, Inc.",
+      "type": "Organization",
+      "cik": "318833",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000934",
+      "label": "Corre Horizon Fund",
+      "type": "Organization",
+      "cik": "1751529",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000940",
+      "label": "MSP Recovery, Inc.",
+      "type": "Organization",
+      "cik": "1802450",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000942",
+      "label": "Cano Health, LLC",
+      "type": "Organization",
+      "cik": "1800682",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000944",
+      "label": "Sonida Senior Living, Inc.",
+      "type": "Organization",
+      "cik": "1043000",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000946",
+      "label": "Conversant GP Holdings LLC",
+      "type": "Organization",
+      "cik": "1850910",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000955",
+      "label": "Nordicus Partners\nCorporation",
+      "type": "Organization",
+      "cik": "1011060",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000960",
+      "label": "GK Partners",
+      "type": "Organization",
+      "cik": "1939150",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000964",
+      "label": "NatWest Group\nplc",
+      "type": "Organization",
+      "cik": "844150",
+      "degree": 2
+    },
+    {
+      "id": "ORG_000983",
+      "label": "Noodles & Company",
+      "type": "Organization",
+      "cik": "1275158",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000984",
+      "label": "Hoak Public Equities, L.P.",
+      "type": "Organization",
+      "cik": "1360554",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000994",
+      "label": "Nuvation Bio Inc.",
+      "type": "Organization",
+      "cik": "1811063",
+      "degree": 1
+    },
+    {
+      "id": "ORG_000999",
+      "label": "LAZARD GLOBAL TOTAL RETURN & INCOME FUND INC",
+      "type": "Organization",
+      "cik": "1278211",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001003",
+      "label": "Ranger Energy\nServices, Inc.",
+      "type": "Organization",
+      "cik": "1699039",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001019",
+      "label": "ARC Document Solutions, Inc.",
+      "type": "Organization",
+      "cik": "1305168",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001058",
+      "label": "Atlantic International Corp.",
+      "type": "Organization",
+      "cik": "1605888",
+      "degree": 2
+    },
+    {
+      "id": "ORG_001068",
+      "label": "KALA BIO, Inc.",
+      "type": "Organization",
+      "cik": "1479419",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001072",
+      "label": "Eos Energy Enterprises, Inc.",
+      "type": "Organization",
+      "cik": "1805077",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001073",
+      "label": "Cerberus Capital Management II",
+      "type": "Organization",
+      "cik": "2027951",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001094",
+      "label": "GlobalTech Corporation",
+      "type": "Organization",
+      "cik": "1938338",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001100",
+      "label": "Lion Group Holding Ltd.",
+      "type": "Organization",
+      "cik": "1806524",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001105",
+      "label": "Spectral Capital Corporation",
+      "type": "Organization",
+      "cik": "1131903",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001108",
+      "label": "CEA\nIndustries Inc.",
+      "type": "Organization",
+      "cik": "1482541",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001109",
+      "label": "111 Equity Group",
+      "type": "Organization",
+      "cik": "2024448",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001119",
+      "label": "Bassett Furniture Industries, Incorporated",
+      "type": "Organization",
+      "cik": "10329",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001121",
+      "label": "Auto Services Company, Inc.",
+      "type": "Organization",
+      "cik": "1813065",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001126",
+      "label": "Berkshire Hathaway Inc.",
+      "type": "Organization",
+      "cik": "1067983",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001134",
+      "label": "BNY MELLON STRATEGIC MUNICIPALS, INC.",
+      "type": "Organization",
+      "cik": "818972",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001136",
+      "label": "Cipher Mining Inc.",
+      "type": "Organization",
+      "cik": "1819989",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001148",
+      "label": "Clearway Energy Group",
+      "type": "Organization",
+      "cik": "1567683",
+      "degree": 2
+    },
+    {
+      "id": "ORG_001238",
+      "label": "EMPIRE PETROLEUM CORPORATION",
+      "type": "Organization",
+      "cik": "887396",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001254",
+      "label": "EchoStar",
+      "type": "Organization",
+      "cik": "1415404",
+      "degree": 2
+    },
+    {
+      "id": "ORG_001272",
+      "label": "LL Flooring Holdings, Inc.",
+      "type": "Organization",
+      "cik": "1396033",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001281",
+      "label": "F9 INVESTMENTS, LLC",
+      "type": "Organization",
+      "cik": "1785675",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001282",
+      "label": "LuxUrban Hotels Inc.",
+      "type": "Organization",
+      "cik": "1893311",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001291",
+      "label": "Mustang Bio, Inc.",
+      "type": "Organization",
+      "cik": "1680048",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001292",
+      "label": "Fortress Biotech, Inc.",
+      "type": "Organization",
+      "cik": "1429260",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001303",
+      "label": "HireRight Holdings Corporation",
+      "type": "Organization",
+      "cik": "1859285",
+      "degree": 2
+    },
+    {
+      "id": "ORG_001305",
+      "label": "Stone Point Capital LLC",
+      "type": "Organization",
+      "cik": "1332638",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001309",
+      "label": "GENERAL ATLANTIC",
+      "type": "Organization",
+      "cik": "1017645",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001328",
+      "label": "Great Ajax Corp.",
+      "type": "Organization",
+      "cik": "1614806",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001330",
+      "label": "Rithm Capital Corp.",
+      "type": "Organization",
+      "cik": "1556593",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001344",
+      "label": "Personalis, Inc.",
+      "type": "Organization",
+      "cik": "1527753",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001345",
+      "label": "Lightspeed Venture Partners",
+      "type": "Organization",
+      "cik": "1435573",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001366",
+      "label": "OneSpan Inc.",
+      "type": "Organization",
+      "cik": "1044777",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001369",
+      "label": "Legion Partners Asset Management, LLC",
+      "type": "Organization",
+      "cik": "1560207",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001377",
+      "label": "Nano Dimension Ltd.",
+      "type": "Organization",
+      "cik": "1643303",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001378",
+      "label": "Murchinson Ltd.",
+      "type": "Organization",
+      "cik": "1838556",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001396",
+      "label": "TSR, Inc.",
+      "type": "Organization",
+      "cik": "98338",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001397",
+      "label": "QAR Industries, Inc.",
+      "type": "Organization",
+      "cik": "1747771",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001402",
+      "label": "Rare Element Resources Ltd.",
+      "type": "Organization",
+      "cik": "1419806",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001413",
+      "label": "Adams\nResources & Energy, Inc.",
+      "type": "Organization",
+      "cik": "2178",
+      "degree": 2
+    },
+    {
+      "id": "ORG_001414",
+      "label": "THG Securities Fund, L.P.",
+      "type": "Organization",
+      "cik": "1827454",
+      "degree": 2
+    },
+    {
+      "id": "ORG_001432",
+      "label": "AERWINS Technologies Inc.",
+      "type": "Organization",
+      "cik": "1855631",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001441",
+      "label": "Tectonic Therapeutic, Inc.",
+      "type": "Organization",
+      "cik": "1681087",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001443",
+      "label": "Vida Ventures II, LLC",
+      "type": "Organization",
+      "cik": "1776851",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001454",
+      "label": "Afya Limited",
+      "type": "Organization",
+      "cik": "1771007",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001475",
+      "label": "Invesco Trust for Investment Grade New York Municipals",
+      "type": "Organization",
+      "cik": "883265",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001476",
+      "label": "BJs RESTAURANTS INC",
+      "type": "Organization",
+      "cik": "1013488",
+      "degree": 2
+    },
+    {
+      "id": "ORG_001478",
+      "label": "BUENAVENTURA MINING CO INC",
+      "type": "Organization",
+      "cik": "1013131",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001489",
+      "label": "MainStay CBRE Global Infrastructure Megatrends Term Fund",
+      "type": "Organization",
+      "cik": "1855066",
+      "degree": 1
+    },
+    {
+      "id": "ORG_001502",
+      "label": "MACQUARIE/FIRST TRUST GLOBAL INFRASTR/UTIL DIV & INC FUND",
+      "type": "Organization",
+      "cik": "1276469",
+      "degree": 1
+    },
+    {
+      "id": "PER_000412",
+      "label": "LUO Jie",
+      "type": "Person",
+      "cik": "1984578",
+      "degree": 1
+    },
+    {
+      "id": "PER_001469",
       "label": "Fitzpatrick Stephen James",
       "type": "Person",
       "cik": "1911254",
+      "degree": 1
+    },
+    {
+      "id": "PER_001470",
+      "label": "Chang Raymond Nobu",
+      "type": "Person",
+      "cik": "1831402",
+      "degree": 1
+    },
+    {
+      "id": "PER_001471",
+      "label": "Compagnie Maritime Belge NV",
+      "type": "Person",
+      "cik": "1910283",
+      "degree": 1
+    },
+    {
+      "id": "PER_001472",
+      "label": "Wang Sizhen",
+      "type": "Person",
+      "cik": "1845547",
+      "degree": 1
+    },
+    {
+      "id": "PER_001473",
+      "label": "IVASCYN DANIEL J",
+      "type": "Person",
+      "cik": "1201895",
+      "degree": 1
+    },
+    {
+      "id": "PER_001474",
+      "label": "Khare Bhisham",
+      "type": "Person",
+      "cik": "1999214",
+      "degree": 1
+    },
+    {
+      "id": "PER_001477",
+      "label": "Sacal Cababie Elias",
+      "type": "Person",
+      "cik": "2013457",
+      "degree": 1
+    },
+    {
+      "id": "PER_001479",
+      "label": "Abu Dhabi Developmental Holding Co PJSC",
+      "type": "Person",
+      "cik": "1997216",
+      "degree": 1
+    },
+    {
+      "id": "PER_001480",
+      "label": "Kumar Venu Raman",
+      "type": "Person",
+      "cik": "1441841",
+      "degree": 2
+    },
+    {
+      "id": "PER_001481",
+      "label": "SPRINGER TIMOTHY A",
+      "type": "Person",
+      "cik": "1055624",
+      "degree": 1
+    },
+    {
+      "id": "PER_001483",
+      "label": "Griffiths Richard Ian",
+      "type": "Person",
+      "cik": "1846370",
+      "degree": 1
+    },
+    {
+      "id": "PER_001484",
+      "label": "HERZFELD THOMAS J",
+      "type": "Person",
+      "cik": "1310710",
+      "degree": 1
+    },
+    {
+      "id": "PER_001485",
+      "label": "LEDECKY JONATHAN J",
+      "type": "Person",
+      "cik": "1008382",
+      "degree": 2
+    },
+    {
+      "id": "PER_001486",
+      "label": "HM Treasury",
+      "type": "Person",
+      "cik": "1451785",
+      "degree": 2
+    },
+    {
+      "id": "PER_001487",
+      "label": "Hung David",
+      "type": "Person",
+      "cik": "1310880",
+      "degree": 1
+    },
+    {
+      "id": "PER_001488",
+      "label": "Leykum Charles S.",
+      "type": "Person",
+      "cik": "1708727",
+      "degree": 1
+    },
+    {
+      "id": "PER_001490",
+      "label": "Suriyakumar Kumarakulasingam",
+      "type": "Person",
+      "cik": "1315130",
+      "degree": 1
+    },
+    {
+      "id": "PER_001491",
+      "label": "Gattani Prateek",
+      "type": "Person",
+      "cik": "1988682",
+      "degree": 1
+    },
+    {
+      "id": "PER_001492",
+      "label": "Green Dana Frank",
+      "type": "Person",
+      "cik": "2028557",
+      "degree": 1
+    },
+    {
+      "id": "PER_001493",
+      "label": "Wang Chunning",
+      "type": "Person",
+      "cik": "1886288",
+      "degree": 1
+    },
+    {
+      "id": "PER_001494",
+      "label": "SKY Data PLL OU",
+      "type": "Person",
+      "cik": "2028814",
+      "degree": 1
+    },
+    {
+      "id": "PER_001496",
+      "label": "BUFFETT WARREN E",
+      "type": "Person",
+      "cik": "315090",
+      "degree": 1
+    },
+    {
+      "id": "PER_001497",
+      "label": "Bitfury Top HoldCo B.V.",
+      "type": "Person",
+      "cik": "1884407",
+      "degree": 1
+    },
+    {
+      "id": "PER_001498",
+      "label": "TotalEnergies SE",
+      "type": "Person",
+      "cik": "879764",
+      "degree": 1
+    },
+    {
+      "id": "PER_001499",
+      "label": "Mulacek Phil E",
+      "type": "Person",
+      "cik": "1670677",
+      "degree": 1
+    },
+    {
+      "id": "PER_001500",
+      "label": "ERGEN CHARLES W",
+      "type": "Person",
+      "cik": "904548",
+      "degree": 2
+    },
+    {
+      "id": "PER_001501",
+      "label": "Ferdinand Brian",
+      "type": "Person",
+      "cik": "1581248",
+      "degree": 1
+    },
+    {
+      "id": "PER_001503",
+      "label": "Synchron",
+      "type": "Person",
+      "cik": "1719869",
+      "degree": 1
+    },
+    {
+      "id": "PER_001504",
+      "label": "Komatsu Shuhei",
+      "type": "Person",
+      "cik": "1964045",
+      "degree": 1
+    },
+    {
+      "id": "PER_001505",
+      "label": "JAGID JEFFREY M",
+      "type": "Person",
+      "cik": "1117037",
+      "degree": 1
+    },
+    {
+      "id": "PER_001506",
+      "label": "Bertelsmann SE & Co. KGaA",
+      "type": "Person",
+      "cik": "1087051",
+      "degree": 1
+    },
+    {
+      "id": "ORG_002185",
+      "label": "Bitfarms                                                 \n  Ltd.",
+      "type": "Organization",
+      "cik": "1812477",
+      "degree": 1
+    },
+    {
+      "id": "ORG_002186",
+      "label": "Riot Platforms, Inc.",
+      "type": "Organization",
+      "cik": "1167419",
+      "degree": 1
+    },
+    {
+      "id": "PER_001917",
+      "label": "Exor N.V.",
+      "type": "Person",
+      "cik": "1589122",
+      "degree": 1
+    },
+    {
+      "id": "PER_002225",
+      "label": "King Duane H",
+      "type": "Person",
+      "cik": "1903594",
+      "degree": 1
+    },
+    {
+      "id": "PER_002227",
+      "label": "Weinzierl John A",
+      "type": "Person",
+      "cik": "1377295",
+      "degree": 1
+    },
+    {
+      "id": "PER_002228",
+      "label": "AECOM",
+      "type": "Person",
+      "cik": "868857",
+      "degree": 1
+    },
+    {
+      "id": "PER_002229",
+      "label": "Chadwick John Huston",
+      "type": "Person",
+      "cik": "1870387",
+      "degree": 1
+    },
+    {
+      "id": "PER_002230",
+      "label": "WHITMORE BRADFORD T",
+      "type": "Person",
+      "cik": "933430",
+      "degree": 1
+    },
+    {
+      "id": "PER_002231",
+      "label": "ARNOLD JEFFREY T",
+      "type": "Person",
+      "cik": "1085341",
+      "degree": 1
+    },
+    {
+      "id": "PER_002232",
+      "label": "Panikassery Sudhir",
+      "type": "Person",
+      "cik": "1999200",
+      "degree": 1
+    },
+    {
+      "id": "PER_002233",
+      "label": "RIGGIO LEONARD",
+      "type": "Person",
+      "cik": "927587",
+      "degree": 1
+    },
+    {
+      "id": "PER_002235",
+      "label": "ICAHN CARL C",
+      "type": "Person",
+      "cik": "921669",
+      "degree": 1
+    },
+    {
+      "id": "PER_002237",
+      "label": "Schornstein Alexander",
+      "type": "Person",
+      "cik": "1999256",
       "degree": 1
     }
   ],
   "edges": [
     {
-      "id": "ORG_000049-ORG_000048-20",
-      "source": "ORG_000049",
-      "target": "ORG_000048",
+      "id": "ORG_001000-ORG_000999-68",
+      "source": "ORG_001000",
+      "target": "ORG_000999",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-03-26",
+      "claim_id": 68,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001000-ORG_001489-70",
+      "source": "ORG_001000",
+      "target": "ORG_001489",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-03-22",
+      "claim_id": 70,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001000-ORG_001134-81",
+      "source": "ORG_001000",
+      "target": "ORG_001134",
+      "predicate": "OWNS",
+      "stake_pct": 6.32,
+      "valid_from": "2024-06-27",
+      "claim_id": 81,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001000-ORG_001502-95",
+      "source": "ORG_001000",
+      "target": "ORG_001502",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-06-26",
+      "claim_id": 95,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001000-ORG_001714-124",
+      "source": "ORG_001000",
+      "target": "ORG_001714",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-06-24",
+      "claim_id": 124,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001000-ORG_001883-145",
+      "source": "ORG_001000",
+      "target": "ORG_001883",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-06-21",
+      "claim_id": 145,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001000-ORG_002112-153",
+      "source": "ORG_001000",
+      "target": "ORG_002112",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-06-21",
+      "claim_id": 153,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001167-ORG_001148-83",
+      "source": "ORG_001167",
+      "target": "ORG_001148",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-06-28",
+      "claim_id": 83,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001765-ORG_001759-131",
+      "source": "ORG_001765",
+      "target": "ORG_001759",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-06-24",
+      "claim_id": 131,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001766-ORG_001759-128",
+      "source": "ORG_001766",
+      "target": "ORG_001759",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-06-24",
+      "claim_id": 128,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_002200-ORG_002199-158",
+      "source": "ORG_002200",
+      "target": "ORG_002199",
+      "predicate": "OWNS",
+      "stake_pct": 0.94,
+      "valid_from": "2024-06-20",
+      "claim_id": 158,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_002206-ORG_002203-159",
+      "source": "ORG_002206",
+      "target": "ORG_002203",
+      "predicate": "OWNS",
+      "stake_pct": 72.995,
+      "valid_from": "2024-06-20",
+      "claim_id": 159,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_002234-ORG_001906-148",
+      "source": "ORG_002234",
+      "target": "ORG_001906",
+      "predicate": "OWNS",
+      "stake_pct": 52.4,
+      "valid_from": "2024-05-01",
+      "claim_id": 148,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_002236-ORG_002165-155",
+      "source": "ORG_002236",
+      "target": "ORG_002165",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-06-21",
+      "claim_id": 155,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_002239-ORG_001638-115",
+      "source": "ORG_002239",
+      "target": "ORG_001638",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-06-25",
+      "claim_id": 115,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_001545-ORG_001543-107",
+      "source": "PER_001545",
+      "target": "ORG_001543",
+      "predicate": "OWNS",
+      "stake_pct": 61.8,
+      "valid_from": "2024-06-25",
+      "claim_id": 107,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001509-ORG_001508-105",
+      "source": "ORG_001509",
+      "target": "ORG_001508",
+      "predicate": "OWNS",
+      "stake_pct": 10.0,
+      "valid_from": "2024-06-05",
+      "claim_id": 105,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001551-ORG_001549-108",
+      "source": "ORG_001551",
+      "target": "ORG_001549",
+      "predicate": "OWNS",
+      "stake_pct": 54.2,
+      "valid_from": "2024-06-25",
+      "claim_id": 108,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001556-ORG_001549-109",
+      "source": "ORG_001556",
+      "target": "ORG_001549",
+      "predicate": "OWNS",
+      "stake_pct": 64.2,
+      "valid_from": "2024-06-25",
+      "claim_id": 109,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001592-ORG_001590-111",
+      "source": "ORG_001592",
+      "target": "ORG_001590",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-06-25",
+      "claim_id": 111,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001597-ORG_001596-112",
+      "source": "ORG_001597",
+      "target": "ORG_001596",
+      "predicate": "OWNS",
+      "stake_pct": 8.4,
+      "valid_from": "2024-05-29",
+      "claim_id": 112,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001597-ORG_001596-113",
+      "source": "ORG_001597",
+      "target": "ORG_001596",
+      "predicate": "OWNS",
+      "stake_pct": 8.4,
+      "valid_from": "2024-05-29",
+      "claim_id": 113,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001628-ORG_001627-114",
+      "source": "ORG_001628",
+      "target": "ORG_001627",
+      "predicate": "OWNS",
+      "stake_pct": 12.1,
+      "valid_from": "2023-04-07",
+      "claim_id": 114,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001680-ORG_001679-121",
+      "source": "ORG_001680",
+      "target": "ORG_001679",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-06-24",
+      "claim_id": 121,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001710-ORG_001708-123",
+      "source": "ORG_001710",
+      "target": "ORG_001708",
+      "predicate": "OWNS",
+      "stake_pct": 18.93,
+      "valid_from": "2024-06-24",
+      "claim_id": 123,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001723-ORG_001722-126",
+      "source": "ORG_001723",
+      "target": "ORG_001722",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-06-25",
+      "claim_id": 126,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001778-ORG_001776-130",
+      "source": "ORG_001778",
+      "target": "ORG_001776",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-06-24",
+      "claim_id": 130,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001793-ORG_001787-132",
+      "source": "ORG_001793",
+      "target": "ORG_001787",
+      "predicate": "OWNS",
+      "stake_pct": 22.3,
+      "valid_from": "2024-06-21",
+      "claim_id": 132,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001807-ORG_001805-133",
+      "source": "ORG_001807",
+      "target": "ORG_001805",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-05-24",
+      "claim_id": 133,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001815-ORG_001816-134",
+      "source": "ORG_001815",
+      "target": "ORG_001816",
+      "predicate": "OWNS",
+      "stake_pct": 14.9,
+      "valid_from": "2024-06-17",
+      "claim_id": 134,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001836-ORG_001834-136",
+      "source": "ORG_001836",
+      "target": "ORG_001834",
+      "predicate": "OWNS",
+      "stake_pct": 10.1,
+      "valid_from": "2024-06-24",
+      "claim_id": 136,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001852-ORG_001853-139",
+      "source": "ORG_001852",
+      "target": "ORG_001853",
+      "predicate": "OWNS",
+      "stake_pct": 81.89,
+      "valid_from": "2024-06-21",
+      "claim_id": 139,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001852-ORG_001856-140",
+      "source": "ORG_001852",
+      "target": "ORG_001856",
+      "predicate": "OWNS",
+      "stake_pct": 44.47,
+      "valid_from": "2024-06-21",
+      "claim_id": 140,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001896-ORG_001884-146",
+      "source": "ORG_001896",
+      "target": "ORG_001884",
+      "predicate": "OWNS",
+      "stake_pct": 25.3,
+      "valid_from": "2024-06-11",
+      "claim_id": 146,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001905-ORG_001904-147",
+      "source": "ORG_001905",
+      "target": "ORG_001904",
+      "predicate": "OWNS",
+      "stake_pct": 53.5,
+      "valid_from": "2024-06-23",
+      "claim_id": 147,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001995-ORG_001993-150",
+      "source": "ORG_001995",
+      "target": "ORG_001993",
+      "predicate": "OWNS",
+      "stake_pct": 5.88,
+      "valid_from": "2024-06-21",
+      "claim_id": 150,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_002008-ORG_002006-151",
+      "source": "ORG_002008",
+      "target": "ORG_002006",
+      "predicate": "OWNS",
+      "stake_pct": 5.0,
+      "valid_from": "2004-06-14",
+      "claim_id": 151,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_002114-ORG_002113-154",
+      "source": "ORG_002114",
+      "target": "ORG_002113",
+      "predicate": "OWNS",
+      "stake_pct": 19.99,
+      "valid_from": "2024-06-20",
+      "claim_id": 154,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000153-ORG_000152-2",
+      "source": "ORG_000153",
+      "target": "ORG_000152",
       "predicate": "OWNS",
       "stake_pct": 11.0,
       "valid_from": "2024-03-20",
+      "claim_id": 2,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000169-ORG_000168-3",
+      "source": "ORG_000169",
+      "target": "ORG_000168",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-03-27",
+      "claim_id": 3,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000169-ORG_000354-17",
+      "source": "ORG_000169",
+      "target": "ORG_000354",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-03-27",
+      "claim_id": 17,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000182-ORG_000181-4",
+      "source": "ORG_000182",
+      "target": "ORG_000181",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-03-27",
+      "claim_id": 4,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000201-ORG_000199-6",
+      "source": "ORG_000201",
+      "target": "ORG_000199",
+      "predicate": "OWNS",
+      "stake_pct": 28.9,
+      "valid_from": "2024-03-27",
+      "claim_id": 6,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000210-ORG_000199-7",
+      "source": "ORG_000210",
+      "target": "ORG_000199",
+      "predicate": "OWNS",
+      "stake_pct": 59.0,
+      "valid_from": "2024-03-27",
+      "claim_id": 7,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000221-ORG_000199-8",
+      "source": "ORG_000221",
+      "target": "ORG_000199",
+      "predicate": "OWNS",
+      "stake_pct": 41.68,
+      "valid_from": "2024-03-27",
+      "claim_id": 8,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000234-ORG_000233-9",
+      "source": "ORG_000234",
+      "target": "ORG_000233",
+      "predicate": "OWNS",
+      "stake_pct": 4.1,
+      "valid_from": "2024-03-27",
+      "claim_id": 9,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000241-ORG_000239-10",
+      "source": "ORG_000241",
+      "target": "ORG_000239",
+      "predicate": "OWNS",
+      "stake_pct": 9.7,
+      "valid_from": "2024-03-27",
+      "claim_id": 10,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000278-ORG_000271-12",
+      "source": "ORG_000278",
+      "target": "ORG_000271",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-03-28",
+      "claim_id": 12,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000336-ORG_000334-14",
+      "source": "ORG_000336",
+      "target": "ORG_000334",
+      "predicate": "OWNS",
+      "stake_pct": 0.25,
+      "valid_from": "2024-03-28",
+      "claim_id": 14,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000356-ORG_000354-16",
+      "source": "ORG_000356",
+      "target": "ORG_000354",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-03-27",
+      "claim_id": 16,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000378-ORG_000379-18",
+      "source": "ORG_000378",
+      "target": "ORG_000379",
+      "predicate": "OWNS",
+      "stake_pct": 9.9,
+      "valid_from": "2024-03-28",
+      "claim_id": 18,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000378-ORG_001475-19",
+      "source": "ORG_000378",
+      "target": "ORG_001475",
+      "predicate": "OWNS",
+      "stake_pct": 8.28,
+      "valid_from": "2024-03-28",
+      "claim_id": 19,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000378-ORG_000576-32",
+      "source": "ORG_000378",
+      "target": "ORG_000576",
+      "predicate": "OWNS",
+      "stake_pct": 14.59,
+      "valid_from": "2024-03-28",
+      "claim_id": 32,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000378-ORG_000577-33",
+      "source": "ORG_000378",
+      "target": "ORG_000577",
+      "predicate": "OWNS",
+      "stake_pct": 8.34,
+      "valid_from": "2024-03-28",
+      "claim_id": 33,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000390-ORG_001476-20",
+      "source": "ORG_000390",
+      "target": "ORG_001476",
+      "predicate": "OWNS",
+      "stake_pct": 5.4,
+      "valid_from": "2024-03-26",
       "claim_id": 20,
       "evidence_count": 1
     },
     {
-      "id": "ORG_000067-ORG_000066-21",
-      "source": "ORG_000067",
-      "target": "ORG_000066",
+      "id": "ORG_000433-ORG_000432-23",
+      "source": "ORG_000433",
+      "target": "ORG_000432",
+      "predicate": "OWNS",
+      "stake_pct": 18.9,
+      "valid_from": "2024-03-26",
+      "claim_id": 23,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000467-ORG_001478-24",
+      "source": "ORG_000467",
+      "target": "ORG_001478",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-03-27",
+      "claim_id": 24,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000498-ORG_000495-25",
+      "source": "ORG_000498",
+      "target": "ORG_000495",
+      "predicate": "OWNS",
+      "stake_pct": 5.45,
+      "valid_from": "2024-03-25",
+      "claim_id": 25,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000498-ORG_000495-118",
+      "source": "ORG_000498",
+      "target": "ORG_000495",
+      "predicate": "OWNS",
+      "stake_pct": 8.35,
+      "valid_from": "2024-06-24",
+      "claim_id": 118,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000534-ORG_000495-28",
+      "source": "ORG_000534",
+      "target": "ORG_000495",
+      "predicate": "OWNS",
+      "stake_pct": 6.5,
+      "valid_from": "2024-03-25",
+      "claim_id": 28,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000534-ORG_000495-119",
+      "source": "ORG_000534",
+      "target": "ORG_000495",
+      "predicate": "OWNS",
+      "stake_pct": 8.72,
+      "valid_from": "2024-06-24",
+      "claim_id": 119,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000542-ORG_000538-29",
+      "source": "ORG_000542",
+      "target": "ORG_000538",
+      "predicate": "OWNS",
+      "stake_pct": 4.99,
+      "valid_from": "2024-03-28",
+      "claim_id": 29,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000542-ORG_001068-73",
+      "source": "ORG_000542",
+      "target": "ORG_001068",
+      "predicate": "OWNS",
+      "stake_pct": 9.99,
+      "valid_from": "2024-06-26",
+      "claim_id": 73,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000542-ORG_001677-120",
+      "source": "ORG_000542",
+      "target": "ORG_001677",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-06-24",
+      "claim_id": 120,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000561-ORG_000558-30",
+      "source": "ORG_000561",
+      "target": "ORG_000558",
+      "predicate": "OWNS",
+      "stake_pct": 59.1,
+      "valid_from": "2024-03-15",
+      "claim_id": 30,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000601-ORG_000411-34",
+      "source": "ORG_000601",
+      "target": "ORG_000411",
+      "predicate": "OWNS",
+      "stake_pct": 96.0,
+      "valid_from": "2024-03-26",
+      "claim_id": 34,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000606-ORG_000604-35",
+      "source": "ORG_000606",
+      "target": "ORG_000604",
+      "predicate": "OWNS",
+      "stake_pct": 84.1,
+      "valid_from": "2024-03-26",
+      "claim_id": 35,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000606-ORG_000604-127",
+      "source": "ORG_000606",
+      "target": "ORG_000604",
+      "predicate": "OWNS",
+      "stake_pct": 80.0,
+      "valid_from": "2024-06-21",
+      "claim_id": 127,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000673-ORG_000667-36",
+      "source": "ORG_000673",
+      "target": "ORG_000667",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-03-28",
+      "claim_id": 36,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000673-ORG_000667-63",
+      "source": "ORG_000673",
+      "target": "ORG_000667",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-03-26",
+      "claim_id": 63,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000681-ORG_000354-37",
+      "source": "ORG_000681",
+      "target": "ORG_000354",
+      "predicate": "OWNS",
+      "stake_pct": 4.5,
+      "valid_from": "2024-03-25",
+      "claim_id": 37,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000720-ORG_000411-38",
+      "source": "ORG_000720",
+      "target": "ORG_000411",
+      "predicate": "OWNS",
+      "stake_pct": 31.1,
+      "valid_from": "2024-03-26",
+      "claim_id": 38,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000723-ORG_000667-39",
+      "source": "ORG_000723",
+      "target": "ORG_000667",
+      "predicate": "OWNS",
+      "stake_pct": 71.4,
+      "valid_from": "2024-03-26",
+      "claim_id": 39,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000732-ORG_000354-40",
+      "source": "ORG_000732",
+      "target": "ORG_000354",
+      "predicate": "OWNS",
+      "stake_pct": 5.0,
+      "valid_from": "2024-03-27",
+      "claim_id": 40,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000774-ORG_000771-41",
+      "source": "ORG_000774",
+      "target": "ORG_000771",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-03-26",
+      "claim_id": 41,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000777-ORG_000495-42",
+      "source": "ORG_000777",
+      "target": "ORG_000495",
+      "predicate": "OWNS",
+      "stake_pct": 27.56,
+      "valid_from": "2024-03-25",
+      "claim_id": 42,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000777-ORG_000495-137",
+      "source": "ORG_000777",
+      "target": "ORG_000495",
+      "predicate": "OWNS",
+      "stake_pct": 35.84,
+      "valid_from": "2024-06-24",
+      "claim_id": 137,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000782-ORG_000779-43",
+      "source": "ORG_000782",
+      "target": "ORG_000779",
+      "predicate": "OWNS",
+      "stake_pct": 100.0,
+      "valid_from": "2024-03-28",
+      "claim_id": 43,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000792-ORG_001476-44",
+      "source": "ORG_000792",
+      "target": "ORG_001476",
+      "predicate": "OWNS",
+      "stake_pct": 9.85,
+      "valid_from": "2024-03-25",
+      "claim_id": 44,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000792-ORG_001542-106",
+      "source": "ORG_000792",
+      "target": "ORG_001542",
+      "predicate": "OWNS",
+      "stake_pct": 28.9,
+      "valid_from": "2024-06-25",
+      "claim_id": 106,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000795-ORG_000794-45",
+      "source": "ORG_000795",
+      "target": "ORG_000794",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-03-18",
+      "claim_id": 45,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000801-ORG_000798-46",
+      "source": "ORG_000801",
+      "target": "ORG_000798",
+      "predicate": "OWNS",
+      "stake_pct": 9.9,
+      "valid_from": "2024-03-25",
+      "claim_id": 46,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000809-ORG_000806-47",
+      "source": "ORG_000809",
+      "target": "ORG_000806",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-03-21",
+      "claim_id": 47,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000842-ORG_000832-52",
+      "source": "ORG_000842",
+      "target": "ORG_000832",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-03-25",
+      "claim_id": 52,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000849-ORG_000846-53",
+      "source": "ORG_000849",
+      "target": "ORG_000846",
+      "predicate": "OWNS",
+      "stake_pct": 1.0,
+      "valid_from": "2024-03-25",
+      "claim_id": 53,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000861-ORG_000501-54",
+      "source": "ORG_000861",
+      "target": "ORG_000501",
+      "predicate": "OWNS",
+      "stake_pct": 0.02,
+      "valid_from": "2024-03-26",
+      "claim_id": 54,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000870-ORG_000868-55",
+      "source": "ORG_000870",
+      "target": "ORG_000868",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-03-25",
+      "claim_id": 55,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000875-ORG_000873-56",
+      "source": "ORG_000875",
+      "target": "ORG_000873",
+      "predicate": "OWNS",
+      "stake_pct": 6.0,
+      "valid_from": "2024-03-17",
+      "claim_id": 56,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000888-ORG_000886-57",
+      "source": "ORG_000888",
+      "target": "ORG_000886",
+      "predicate": "OWNS",
+      "stake_pct": 81.4,
+      "valid_from": "2024-03-20",
+      "claim_id": 57,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000896-ORG_000892-58",
+      "source": "ORG_000896",
+      "target": "ORG_000892",
+      "predicate": "OWNS",
+      "stake_pct": 4.5,
+      "valid_from": "2020-01-07",
+      "claim_id": 58,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000900-ORG_000898-59",
+      "source": "ORG_000900",
+      "target": "ORG_000898",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-03-07",
+      "claim_id": 59,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000934-ORG_000931-60",
+      "source": "ORG_000934",
+      "target": "ORG_000931",
+      "predicate": "OWNS",
+      "stake_pct": 23.0,
+      "valid_from": "2024-03-22",
+      "claim_id": 60,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000942-ORG_000940-61",
+      "source": "ORG_000942",
+      "target": "ORG_000940",
+      "predicate": "OWNS",
+      "stake_pct": 14.1,
+      "valid_from": "2024-03-22",
+      "claim_id": 61,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000946-ORG_000944-62",
+      "source": "ORG_000946",
+      "target": "ORG_000944",
+      "predicate": "OWNS",
+      "stake_pct": 47.2,
+      "valid_from": "2024-03-22",
+      "claim_id": 62,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000960-ORG_000955-64",
+      "source": "ORG_000960",
+      "target": "ORG_000955",
+      "predicate": "OWNS",
+      "stake_pct": 19.95,
+      "valid_from": "2024-03-20",
+      "claim_id": 64,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_000984-ORG_000983-66",
+      "source": "ORG_000984",
+      "target": "ORG_000983",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-03-22",
+      "claim_id": 66,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001073-ORG_001072-74",
+      "source": "ORG_001073",
+      "target": "ORG_001072",
+      "predicate": "OWNS",
+      "stake_pct": 49.9,
+      "valid_from": "2024-06-21",
+      "claim_id": 74,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001109-ORG_001108-78",
+      "source": "ORG_001109",
+      "target": "ORG_001108",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-06-26",
+      "claim_id": 78,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001121-ORG_001119-79",
+      "source": "ORG_001121",
+      "target": "ORG_001119",
+      "predicate": "OWNS",
+      "stake_pct": 8.57,
+      "valid_from": "2024-06-26",
+      "claim_id": 79,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001281-ORG_001272-87",
+      "source": "ORG_001281",
+      "target": "ORG_001272",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-06-28",
+      "claim_id": 87,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001292-ORG_001291-89",
+      "source": "ORG_001292",
+      "target": "ORG_001291",
+      "predicate": "OWNS",
+      "stake_pct": 7.4,
+      "valid_from": "2024-06-27",
+      "claim_id": 89,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001305-ORG_001303-92",
+      "source": "ORG_001305",
+      "target": "ORG_001303",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-06-28",
+      "claim_id": 92,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001309-ORG_001303-90",
+      "source": "ORG_001309",
+      "target": "ORG_001303",
+      "predicate": "OWNS",
+      "stake_pct": 5.0,
+      "valid_from": "2022-12-09",
+      "claim_id": 90,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001330-ORG_001328-91",
+      "source": "ORG_001330",
+      "target": "ORG_001328",
+      "predicate": "OWNS",
+      "stake_pct": 12.6,
+      "valid_from": "2024-06-26",
+      "claim_id": 91,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001345-ORG_001344-93",
+      "source": "ORG_001345",
+      "target": "ORG_001344",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-06-28",
+      "claim_id": 93,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001369-ORG_001366-94",
+      "source": "ORG_001369",
+      "target": "ORG_001366",
+      "predicate": "OWNS",
+      "stake_pct": 6.2,
+      "valid_from": "2024-06-26",
+      "claim_id": 94,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001378-ORG_001377-96",
+      "source": "ORG_001378",
+      "target": "ORG_001377",
+      "predicate": "OWNS",
+      "stake_pct": 2.1,
+      "valid_from": "2024-06-28",
+      "claim_id": 96,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001397-ORG_001396-97",
+      "source": "ORG_001397",
+      "target": "ORG_001396",
+      "predicate": "OWNS",
+      "stake_pct": 5.0,
+      "valid_from": "2024-06-28",
+      "claim_id": 97,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001414-ORG_001413-99",
+      "source": "ORG_001414",
+      "target": "ORG_001413",
+      "predicate": "OWNS",
+      "stake_pct": 5.2,
+      "valid_from": "2024-06-26",
+      "claim_id": 99,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001414-ORG_001413-103",
+      "source": "ORG_001414",
+      "target": "ORG_001413",
+      "predicate": "OWNS",
+      "stake_pct": 5.2,
+      "valid_from": "2024-06-26",
+      "claim_id": 103,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_001443-ORG_001441-102",
+      "source": "ORG_001443",
+      "target": "ORG_001441",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-06-20",
+      "claim_id": 102,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_000412-ORG_000411-21",
+      "source": "PER_000412",
+      "target": "ORG_000411",
       "predicate": "OWNS",
       "stake_pct": null,
       "valid_from": "2024-03-27",
@@ -65,13 +2943,473 @@
       "evidence_count": 1
     },
     {
-      "id": "PER_000078-ORG_000032-19",
-      "source": "PER_000078",
-      "target": "ORG_000032",
+      "id": "PER_001469-ORG_000140-1",
+      "source": "PER_001469",
+      "target": "ORG_000140",
       "predicate": "OWNS",
       "stake_pct": 19.17,
       "valid_from": "2024-03-22",
-      "claim_id": 19,
+      "claim_id": 1,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_001470-ORG_000186-5",
+      "source": "PER_001470",
+      "target": "ORG_000186",
+      "predicate": "OWNS",
+      "stake_pct": 9.99,
+      "valid_from": "2024-02-28",
+      "claim_id": 5,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_001471-ORG_000253-11",
+      "source": "PER_001471",
+      "target": "ORG_000253",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-03-28",
+      "claim_id": 11,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_001472-ORG_000271-13",
+      "source": "PER_001472",
+      "target": "ORG_000271",
+      "predicate": "OWNS",
+      "stake_pct": 5.0,
+      "valid_from": "2024-03-28",
+      "claim_id": 13,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_001473-ORG_000348-15",
+      "source": "PER_001473",
+      "target": "ORG_000348",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-03-27",
+      "claim_id": 15,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_001474-ORG_000363-143",
+      "source": "PER_001474",
+      "target": "ORG_000363",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-06-21",
+      "claim_id": 143,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_001477-ORG_000152-22",
+      "source": "PER_001477",
+      "target": "ORG_000152",
+      "predicate": "OWNS",
+      "stake_pct": 87.2,
+      "valid_from": "2024-03-20",
+      "claim_id": 22,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_001479-ORG_000501-26",
+      "source": "PER_001479",
+      "target": "ORG_000501",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-03-26",
+      "claim_id": 26,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_001480-ORG_000363-27",
+      "source": "PER_001480",
+      "target": "ORG_000363",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-03-26",
+      "claim_id": 27,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_001480-ORG_000363-141",
+      "source": "PER_001480",
+      "target": "ORG_000363",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-06-21",
+      "claim_id": 141,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_001481-ORG_000565-31",
+      "source": "PER_001481",
+      "target": "ORG_000565",
+      "predicate": "OWNS",
+      "stake_pct": 27.9,
+      "valid_from": "2024-03-26",
+      "claim_id": 31,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_001483-ORG_000813-48",
+      "source": "PER_001483",
+      "target": "ORG_000813",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-03-27",
+      "claim_id": 48,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_001484-ORG_000824-49",
+      "source": "PER_001484",
+      "target": "ORG_000824",
+      "predicate": "OWNS",
+      "stake_pct": 26.03,
+      "valid_from": "2011-08-18",
+      "claim_id": 49,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_001485-ORG_000825-50",
+      "source": "PER_001485",
+      "target": "ORG_000825",
+      "predicate": "OWNS",
+      "stake_pct": 80.5,
+      "valid_from": "2024-03-25",
+      "claim_id": 50,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_001485-ORG_001507-51",
+      "source": "PER_001485",
+      "target": "ORG_001507",
+      "predicate": "OWNS",
+      "stake_pct": 79.4,
+      "valid_from": "2024-03-25",
+      "claim_id": 51,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_001486-ORG_000964-65",
+      "source": "PER_001486",
+      "target": "ORG_000964",
+      "predicate": "OWNS",
+      "stake_pct": 29.82,
+      "valid_from": "2024-03-22",
+      "claim_id": 65,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_001486-ORG_000964-129",
+      "source": "PER_001486",
+      "target": "ORG_000964",
+      "predicate": "OWNS",
+      "stake_pct": 20.92,
+      "valid_from": "2024-06-24",
+      "claim_id": 129,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_001487-ORG_000994-67",
+      "source": "PER_001487",
+      "target": "ORG_000994",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-03-24",
+      "claim_id": 67,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_001488-ORG_001003-69",
+      "source": "PER_001488",
+      "target": "ORG_001003",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-03-26",
+      "claim_id": 69,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_001490-ORG_001019-71",
+      "source": "PER_001490",
+      "target": "ORG_001019",
+      "predicate": "OWNS",
+      "stake_pct": 11.08,
+      "valid_from": "2024-06-27",
+      "claim_id": 71,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_001491-ORG_001058-72",
+      "source": "PER_001491",
+      "target": "ORG_001058",
+      "predicate": "OWNS",
+      "stake_pct": 52.2,
+      "valid_from": "2024-06-18",
+      "claim_id": 72,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_001492-ORG_001094-75",
+      "source": "PER_001492",
+      "target": "ORG_001094",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2022-12-31",
+      "claim_id": 75,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_001493-ORG_001100-76",
+      "source": "PER_001493",
+      "target": "ORG_001100",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2023-12-14",
+      "claim_id": 76,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_001494-ORG_001105-77",
+      "source": "PER_001494",
+      "target": "ORG_001105",
+      "predicate": "OWNS",
+      "stake_pct": 5.68,
+      "valid_from": "2024-04-25",
+      "claim_id": 77,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_001496-ORG_001126-80",
+      "source": "PER_001496",
+      "target": "ORG_001126",
+      "predicate": "OWNS",
+      "stake_pct": 37.0,
+      "valid_from": "2024-06-28",
+      "claim_id": 80,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_001497-ORG_001136-82",
+      "source": "PER_001497",
+      "target": "ORG_001136",
+      "predicate": "OWNS",
+      "stake_pct": 1.6,
+      "valid_from": "2024-06-26",
+      "claim_id": 82,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_001498-ORG_001148-84",
+      "source": "PER_001498",
+      "target": "ORG_001148",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-06-28",
+      "claim_id": 84,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_001499-ORG_001238-85",
+      "source": "PER_001499",
+      "target": "ORG_001238",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2023-11-29",
+      "claim_id": 85,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_001500-ORG_001254-86",
+      "source": "PER_001500",
+      "target": "ORG_001254",
+      "predicate": "OWNS",
+      "stake_pct": 91.4,
+      "valid_from": "2024-06-26",
+      "claim_id": 86,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_001500-ORG_001254-125",
+      "source": "PER_001500",
+      "target": "ORG_001254",
+      "predicate": "OWNS",
+      "stake_pct": 91.4,
+      "valid_from": "2024-06-24",
+      "claim_id": 125,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_001501-ORG_001282-88",
+      "source": "PER_001501",
+      "target": "ORG_001282",
+      "predicate": "OWNS",
+      "stake_pct": 9.99,
+      "valid_from": "2024-06-26",
+      "claim_id": 88,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_001503-ORG_001402-98",
+      "source": "PER_001503",
+      "target": "ORG_001402",
+      "predicate": "OWNS",
+      "stake_pct": 33.5,
+      "valid_from": "2024-06-28",
+      "claim_id": 98,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_001504-ORG_001432-100",
+      "source": "PER_001504",
+      "target": "ORG_001432",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2023-02-03",
+      "claim_id": 100,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_001505-ORG_001058-101",
+      "source": "PER_001505",
+      "target": "ORG_001058",
+      "predicate": "OWNS",
+      "stake_pct": 7.5,
+      "valid_from": "2024-06-18",
+      "claim_id": 101,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_001506-ORG_001454-104",
+      "source": "PER_001506",
+      "target": "ORG_001454",
+      "predicate": "OWNS",
+      "stake_pct": 21.65,
+      "valid_from": "2024-06-27",
+      "claim_id": 104,
+      "evidence_count": 1
+    },
+    {
+      "id": "ORG_002186-ORG_002185-157",
+      "source": "ORG_002186",
+      "target": "ORG_002185",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-06-24",
+      "claim_id": 157,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_001917-ORG_001914-149",
+      "source": "PER_001917",
+      "target": "ORG_001914",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-06-21",
+      "claim_id": 149,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_002225-ORG_002226-110",
+      "source": "PER_002225",
+      "target": "ORG_002226",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-06-25",
+      "claim_id": 110,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_002227-ORG_002226-116",
+      "source": "PER_002227",
+      "target": "ORG_002226",
+      "predicate": "OWNS",
+      "stake_pct": 5.0,
+      "valid_from": "2024-06-25",
+      "claim_id": 116,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_002228-ORG_001670-117",
+      "source": "PER_002228",
+      "target": "ORG_001670",
+      "predicate": "OWNS",
+      "stake_pct": 19.9,
+      "valid_from": "2024-06-24",
+      "claim_id": 117,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_002229-ORG_001688-122",
+      "source": "PER_002229",
+      "target": "ORG_001688",
+      "predicate": "OWNS",
+      "stake_pct": 10.3,
+      "valid_from": "2024-06-25",
+      "claim_id": 122,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_002230-ORG_001826-135",
+      "source": "PER_002230",
+      "target": "ORG_001826",
+      "predicate": "OWNS",
+      "stake_pct": 71.3,
+      "valid_from": "2024-06-25",
+      "claim_id": 135,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_002231-ORG_001688-138",
+      "source": "PER_002231",
+      "target": "ORG_001688",
+      "predicate": "OWNS",
+      "stake_pct": 10.68,
+      "valid_from": "2024-06-21",
+      "claim_id": 138,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_002232-ORG_000363-142",
+      "source": "PER_002232",
+      "target": "ORG_000363",
+      "predicate": "OWNS",
+      "stake_pct": null,
+      "valid_from": "2024-06-21",
+      "claim_id": 142,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_002233-ORG_001861-144",
+      "source": "PER_002233",
+      "target": "ORG_001861",
+      "predicate": "OWNS",
+      "stake_pct": 0.1,
+      "valid_from": "2024-06-11",
+      "claim_id": 144,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_002235-ORG_002092-152",
+      "source": "PER_002235",
+      "target": "ORG_002092",
+      "predicate": "OWNS",
+      "stake_pct": 18.41,
+      "valid_from": "2024-06-25",
+      "claim_id": 152,
+      "evidence_count": 1
+    },
+    {
+      "id": "PER_002237-ORG_002172-156",
+      "source": "PER_002237",
+      "target": "ORG_002172",
+      "predicate": "OWNS",
+      "stake_pct": 5.0,
+      "valid_from": "2024-06-24",
+      "claim_id": 156,
       "evidence_count": 1
     }
   ]

@@ -71,6 +71,15 @@ def _guess_type(name: str) -> str:
     return EntityType.ORGANIZATION if any(k in low for k in org_kw) else EntityType.PERSON
 
 
+def _build_name_index(session) -> dict[tuple[str, str], Entity]:
+    """Index existing entities by (type, core-name) for O(1) reuse during resolution."""
+    index: dict[tuple[str, str], Entity] = {}
+    for e in session.execute(select(Entity)).scalars().all():
+        for name in [e.canonical_name, *(e.aliases or [])]:
+            index.setdefault((e.type, core(name)), e)
+    return index
+
+
 def _find_by_name(session, entity_type: str, names: list[str]) -> Entity | None:
     """Reuse an existing entity whose canonical_name/alias matches by core name."""
     targets = {core(n) for n in names}
@@ -84,10 +93,12 @@ def _find_by_name(session, entity_type: str, names: list[str]) -> Entity | None:
     return None
 
 
-def _materialize_cluster(session, cluster: Cluster) -> Entity:
+def _materialize_cluster(
+    session, cluster: Cluster, index: dict[tuple[str, str], Entity] | None = None
+) -> Entity:
     cik = cluster.cik
     if cik:
-        return upsert_entity_by_external_id(
+        entity = upsert_entity_by_external_id(
             session,
             entity_type=cluster.entity_type,
             canonical_name=cluster.canonical_name,
@@ -95,20 +106,34 @@ def _materialize_cluster(session, cluster: Cluster) -> Entity:
             value=cik,
             aliases=cluster.aliases,
         )
-    # Non-CIK cluster: reuse an existing same-name entity for idempotency.
-    names = [cluster.canonical_name, *cluster.aliases]
-    existing = _find_by_name(session, cluster.entity_type, names)
-    if existing is not None:
-        merged = set(existing.aliases or []) | set(cluster.aliases)
-        merged.discard(existing.canonical_name)
-        existing.aliases = sorted(merged)
-        return existing
-    return upsert_entity_by_external_id(
-        session,
-        entity_type=cluster.entity_type,
-        canonical_name=cluster.canonical_name,
-        aliases=cluster.aliases,
-    )
+    else:
+        # Non-CIK cluster: reuse an existing same-name entity for idempotency.
+        names = [cluster.canonical_name, *cluster.aliases]
+        existing = None
+        if index is not None:
+            for n in names:
+                existing = index.get((cluster.entity_type, core(n)))
+                if existing is not None:
+                    break
+        else:
+            existing = _find_by_name(session, cluster.entity_type, names)
+        if existing is not None:
+            merged = set(existing.aliases or []) | set(cluster.aliases)
+            merged.discard(existing.canonical_name)
+            existing.aliases = sorted(merged)
+            entity = existing
+        else:
+            entity = upsert_entity_by_external_id(
+                session,
+                entity_type=cluster.entity_type,
+                canonical_name=cluster.canonical_name,
+                aliases=cluster.aliases,
+            )
+    # Keep the index current so later clusters in the same run can reuse this entity.
+    if index is not None:
+        for name in [entity.canonical_name, *(entity.aliases or [])]:
+            index.setdefault((entity.type, core(name)), entity)
+    return entity
 
 
 def run_resolution(backend: str | None = None) -> dict:
@@ -122,10 +147,11 @@ def run_resolution(backend: str | None = None) -> dict:
         else:
             clusters = resolve_records(records)
 
+        index = _build_name_index(session)
         entities_created = 0
         mentions_resolved = 0
         for cluster in clusters:
-            entity = _materialize_cluster(session, cluster)
+            entity = _materialize_cluster(session, cluster, index)
             entities_created += 1
             for member in cluster.members:
                 if member.mention_id is not None:

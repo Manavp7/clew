@@ -27,14 +27,18 @@ from clew.resolve.service import link_or_create_entity
 def run_mentions(threshold: float = 0.5, limit: int | None = None) -> dict:
     written = 0
     with write_session() as session:
+        from clew.db.models import Mention
         from clew.ledger.writer import write_mention
 
+        done_doc_ids = set(
+            session.execute(select(Mention.document_id).distinct()).scalars().all()
+        )
         docs = session.execute(select(Document)).scalars().all()
         if limit:
             docs = docs[:limit]
         for doc in docs:
-            if not doc.text:
-                continue
+            if not doc.text or doc.id in done_doc_ids:
+                continue  # incremental: skip already-processed documents
             spans = extract_mentions(doc.text, threshold=threshold)
             for s in spans:
                 write_mention(
@@ -137,12 +141,17 @@ def run_claims(use_llm: bool | None = None, limit: int | None = None) -> dict:
 
     written_rule, written_llm, docs_processed = 0, 0, 0
     with write_session() as session:
+        from clew.db.models import Evidence
+
+        done_doc_ids = set(
+            session.execute(select(Evidence.document_id).distinct()).scalars().all()
+        )
         docs = session.execute(select(Document)).scalars().all()
         if limit:
             docs = docs[:limit]
         for doc in docs:
-            if not doc.text:
-                continue
+            if not doc.text or doc.id in done_doc_ids:
+                continue  # incremental: skip documents that already have claims
             docs_processed += 1
             parsed = parse_filing(doc.text)
             meta = doc.meta or {}

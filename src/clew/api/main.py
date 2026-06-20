@@ -94,12 +94,16 @@ def list_claims(
     subject: str | None = None,
     predicate: str | None = None,
     object_id: str | None = Query(default=None, alias="object"),
-    as_of: str | None = None,
+    as_of: str | None = Query(default=None, description="Transaction time: what we believed at T"),
+    valid_on: str | None = Query(default=None, description="World time: true in the world on D"),
 ) -> dict:
+    from datetime import date as _date
+
     with read_session() as session:
         claims = claims_asof(
             session,
             as_of=_parse_asof(as_of),
+            valid_on=_date.fromisoformat(valid_on) if valid_on else None,
             subject_id=subject,
             predicate=predicate,
             object_id=object_id,
