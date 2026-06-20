@@ -20,6 +20,7 @@ project_app = typer.Typer(help="Rebuild projections from the ledger")
 eval_app = typer.Typer(help="Evaluation harness")
 reconcile_app = typer.Typer(help="Ledger reconciliation: supersession + contradictions")
 analytics_app = typer.Typer(help="Graph analytics (centrality, communities, interlocks)")
+er_app = typer.Typer(help="Entity-resolution learning loop (merge suggestions + review)")
 
 app.add_typer(ingest_app, name="ingest")
 app.add_typer(extract_app, name="extract")
@@ -28,6 +29,7 @@ app.add_typer(project_app, name="project")
 app.add_typer(eval_app, name="eval")
 app.add_typer(reconcile_app, name="reconcile")
 app.add_typer(analytics_app, name="analytics")
+app.add_typer(er_app, name="er")
 
 
 @app.command()
@@ -239,6 +241,34 @@ def analytics_interlocks_cmd(
     for r in interlocks(g, min_targets=min_targets, limit=limit):
         issuers = [i["label"] for i in r["issuers"]]
         console.print(f"  {r['issuer_count']}  {r['label']} -> {issuers}")
+
+
+@er_app.command("suggest")
+def er_suggest_cmd(limit: int = typer.Option(200)) -> None:
+    """Generate near-threshold entity merge suggestions for human review."""
+    from clew.db.session import write_session
+    from clew.resolve.feedback import generate_suggestions
+
+    with write_session() as session:
+        console.print(generate_suggestions(session, limit=limit))
+
+
+@er_app.command("review")
+def er_review_cmd(
+    suggestion_id: int = typer.Argument(...),
+    decision: str = typer.Argument(..., help="accept | reject"),
+) -> None:
+    """Accept (merge) or reject (block) a merge suggestion."""
+    from clew.db.session import write_session
+    from clew.resolve.feedback import accept_suggestion, reject_suggestion
+
+    with write_session() as session:
+        if decision == "accept":
+            console.print(accept_suggestion(session, suggestion_id))
+        elif decision == "reject":
+            console.print(reject_suggestion(session, suggestion_id))
+        else:
+            console.print("[red]decision must be 'accept' or 'reject'[/]")
 
 
 @app.command()

@@ -140,12 +140,17 @@ def run_resolution(backend: str | None = None) -> dict:
     backend = backend or "default"
     with write_session() as session:
         records, _ = _collect_records(session)
+        from clew.resolve.feedback import load_decisions
+
+        must_link, must_not_link = load_decisions(session)
         if backend == "splink":
             from clew.resolve.splink_er import resolve_records_splink
 
             clusters = resolve_records_splink(records)
         else:
-            clusters = resolve_records(records)
+            clusters = resolve_records(
+                records, must_link=must_link, must_not_link=must_not_link
+            )
 
         index = _build_name_index(session)
         entities_created = 0

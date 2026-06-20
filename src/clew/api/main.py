@@ -241,6 +241,38 @@ def analytics_interlocks(min_targets: int = 2, limit: int = 50) -> dict:
     return {"interlocks": interlocks(g, min_targets=min_targets, limit=limit)}
 
 
+@app.get("/merge-suggestions")
+def merge_suggestions(status: str = "open", limit: int = 100) -> dict:
+    from clew.db.models import MergeSuggestion
+
+    with read_session() as session:
+        stmt = (
+            select(MergeSuggestion)
+            .where(MergeSuggestion.status == status)
+            .order_by(MergeSuggestion.score.desc())
+            .limit(limit)
+        )
+        rows = session.execute(stmt).scalars().all()
+
+        def name(eid: str) -> str:
+            e = session.get(Entity, eid)
+            return e.canonical_name if e else eid
+
+        return {
+            "count": len(rows),
+            "suggestions": [
+                {
+                    "id": r.id,
+                    "score": r.score,
+                    "reason": r.reason,
+                    "entity_a": {"id": r.entity_a, "name": name(r.entity_a)},
+                    "entity_b": {"id": r.entity_b, "name": name(r.entity_b)},
+                }
+                for r in rows
+            ],
+        }
+
+
 @app.get("/documents/{document_id}")
 def get_document(document_id: int) -> dict:
     with read_session() as session:

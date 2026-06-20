@@ -65,11 +65,27 @@ def _jw(a: str, b: str) -> float:
     return 1.0 - distance.JaroWinkler.normalized_distance(a, b)
 
 
-def resolve_records(records: list[Record]) -> list[Cluster]:
-    """Cluster records into canonical entities. Pure function (no DB)."""
+def resolve_records(
+    records: list[Record],
+    *,
+    must_link: set[frozenset[str]] | None = None,
+    must_not_link: set[frozenset[str]] | None = None,
+) -> list[Cluster]:
+    """Cluster records into canonical entities. Pure function (no DB).
+
+    ``must_link`` / ``must_not_link`` are sets of ``frozenset({core_a, core_b})``
+    from human ER feedback: must-link pairs are always unioned, must-not-link
+    pairs are never unioned (human corrections override string similarity).
+    """
+    must_link = must_link or set()
+    must_not_link = must_not_link or set()
     n = len(records)
     uf = _UnionFind(n)
     norms = [normalized(r.name) for r in records]
+    cores = [core(r.name) for r in records]
+
+    def _blocked(i: int, j: int) -> bool:
+        return frozenset({cores[i], cores[j]}) in must_not_link
 
     # 1) CIK anchor: union all records sharing a CIK.
     by_cik: dict[str, list[int]] = {}
@@ -78,9 +94,10 @@ def resolve_records(records: list[Record]) -> list[Cluster]:
             by_cik.setdefault(r.cik, []).append(i)
     for idxs in by_cik.values():
         for j in idxs[1:]:
-            uf.union(idxs[0], j)
+            if not _blocked(idxs[0], j):
+                uf.union(idxs[0], j)
 
-    # 2) Fuzzy linkage within blocks; never cross differing CIKs or types.
+    # 2) Fuzzy linkage within blocks; never cross differing CIKs, types, or must-not-link.
     blocks: dict[tuple[str, str], list[int]] = {}
     for i, r in enumerate(records):
         blocks.setdefault((r.entity_type, block_key(r.name)), []).append(i)
@@ -91,8 +108,19 @@ def resolve_records(records: list[Record]) -> list[Cluster]:
                 ci, cj = records[i].cik, records[j].cik
                 if ci and cj and ci != cj:
                     continue  # authoritative: different CIK => different entity
+                if _blocked(i, j):
+                    continue  # human must-not-link
                 if _jw(norms[i], norms[j]) >= JW_THRESHOLD:
                     uf.union(i, j)
+
+    # 3) Human must-link: union any pair whose core names match a must-link decision.
+    if must_link:
+        for a in range(n):
+            for b in range(a + 1, n):
+                if records[a].entity_type != records[b].entity_type:
+                    continue
+                if frozenset({cores[a], cores[b]}) in must_link and not _blocked(a, b):
+                    uf.union(a, b)
 
     # Gather clusters.
     groups: dict[int, list[int]] = {}

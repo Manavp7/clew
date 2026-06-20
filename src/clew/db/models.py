@@ -214,6 +214,66 @@ class Contradiction(Base):
     )
 
 
+class MergeSuggestion(Base):
+    """A candidate entity merge awaiting human review (continuous-learning loop)."""
+
+    __tablename__ = "merge_suggestion"
+    __table_args__ = (
+        UniqueConstraint("entity_a", "entity_b", name="uq_merge_pair"),
+        Index("ix_merge_status", "status"),
+    )
+
+    id: Mapped[int] = mapped_column(BigInteger, primary_key=True, autoincrement=True)
+    # Plain string refs (not FKs): an accepted merge deletes one entity, but we
+    # keep the suggestion row for audit — like entity_merge_log.
+    entity_a: Mapped[str] = mapped_column(String(32), nullable=False)
+    entity_b: Mapped[str] = mapped_column(String(32), nullable=False)
+    score: Mapped[float] = mapped_column(Float, nullable=False)
+    reason: Mapped[str | None] = mapped_column(Text)
+    # status: open | accepted | rejected
+    status: Mapped[str] = mapped_column(Text, nullable=False, default="open")
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), nullable=False
+    )
+    decided_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+
+
+class ERDecision(Base):
+    """Persisted human ER feedback: must-link / must-not-link keyed by core name.
+
+    Consulted by the resolver so confirmed merges become deterministic and
+    rejected merges are permanently blocked — the loop that lets human
+    corrections compound over time.
+    """
+
+    __tablename__ = "er_decision"
+    __table_args__ = (UniqueConstraint("key_a", "key_b", name="uq_er_decision_pair"),)
+
+    id: Mapped[int] = mapped_column(BigInteger, primary_key=True, autoincrement=True)
+    key_a: Mapped[str] = mapped_column(Text, nullable=False)  # normalized core name
+    key_b: Mapped[str] = mapped_column(Text, nullable=False)
+    decision: Mapped[str] = mapped_column(Text, nullable=False)  # must_link | must_not_link
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), nullable=False
+    )
+
+
+class EntityMergeLog(Base):
+    """Audit trail of executed entity merges (kept_id absorbed dropped_id)."""
+
+    __tablename__ = "entity_merge_log"
+
+    id: Mapped[int] = mapped_column(BigInteger, primary_key=True, autoincrement=True)
+    kept_id: Mapped[str] = mapped_column(Text, nullable=False)
+    dropped_id: Mapped[str] = mapped_column(Text, nullable=False)
+    dropped_name: Mapped[str | None] = mapped_column(Text)
+    claims_repointed: Mapped[int] = mapped_column(Integer, default=0)
+    mentions_repointed: Mapped[int] = mapped_column(Integer, default=0)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), nullable=False
+    )
+
+
 class EvalRun(Base):
     """Versioned evaluation run — metrics over time vs pipeline/model version."""
 
