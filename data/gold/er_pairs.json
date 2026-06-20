@@ -1,0 +1,18 @@
+{
+  "dataset": "er_pairs@v1",
+  "description": "Hand-labeled organization-name pairs for entity-resolution evaluation. label=same means the two surfaces refer to the same real-world entity.",
+  "pairs": [
+    {"a": "Vertical Aerospace Ltd.", "b": "Vertical\nAerospace Ltd.", "label": "same"},
+    {"a": "RA CAPITAL MANAGEMENT, L.P.", "b": "RA Capital Management LP", "label": "same"},
+    {"a": "HCM Investor Holdings, LLC", "b": "HCM Investor Holdings LLC", "label": "same"},
+    {"a": "ARS Pharmaceuticals, Inc.", "b": "ARS Pharmaceuticals Inc", "label": "same"},
+    {"a": "Murano Global Investments PLC", "b": "Murano Global Investments Ltd", "label": "same"},
+    {"a": "Apple Inc.", "b": "Apple Computer, Inc.", "label": "same"},
+    {"a": "Vertical Aerospace Ltd.", "b": "ARS Pharmaceuticals, Inc.", "label": "different"},
+    {"a": "RA Capital Management, L.P.", "b": "HCM Investor Holdings, LLC", "label": "different"},
+    {"a": "Murano Global Investments PLC", "b": "Vertical Aerospace Ltd.", "label": "different"},
+    {"a": "Apple Inc.", "b": "Apricot Capital LLC", "label": "different"},
+    {"a": "Global Holdings Inc", "b": "Global Industries Inc", "label": "different"},
+    {"a": "ARS Pharmaceuticals, Inc.", "b": "ARS Pharma Holdings LLC", "label": "different"}
+  ]
+}

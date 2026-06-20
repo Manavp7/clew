@@ -126,6 +126,38 @@ def project_all_cmd() -> None:
     project_graph_cmd(out="data/graph.json")
 
 
+@eval_app.command("all")
+def eval_all_cmd() -> None:
+    """Run all evaluation stages and persist versioned eval_run rows."""
+    from clew.eval.run import eval_all
+
+    console.print(eval_all())
+
+
+@eval_app.command("er")
+def eval_er_cmd() -> None:
+    """Run entity-resolution evaluation."""
+    from clew.eval.run import eval_er
+
+    console.print(eval_er())
+
+
+@eval_app.command("extraction")
+def eval_extraction_cmd() -> None:
+    """Run extraction evaluation against per-filing gold."""
+    from clew.eval.run import eval_extraction
+
+    console.print(eval_extraction())
+
+
+@eval_app.command("citation")
+def eval_citation_cmd() -> None:
+    """Run citation-accuracy evaluation."""
+    from clew.eval.run import eval_citation
+
+    console.print(eval_citation())
+
+
 @app.command()
 def search(query: str, limit: int = 10) -> None:
     """Semantic entity search over the vector projection."""

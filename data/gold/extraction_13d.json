@@ -1,0 +1,27 @@
+{
+  "dataset": "extraction_13d@v1",
+  "description": "Expected beneficial-ownership relationships per 13D filing, keyed by EDGAR accession number. filer_cik OWNS subject_cik. CIKs are SEC-assigned ground truth from the filing header; stake_pct (when present) is the hand-verified percent of class. null stake_pct means 'not checked'.",
+  "filings": [
+    {
+      "accession": "0001193125-24-081594",
+      "filer_cik": "1911254",
+      "subject_cik": "1867102",
+      "predicate": "OWNS",
+      "stake_pct": 19.17
+    },
+    {
+      "accession": "0001140361-24-016670",
+      "filer_cik": "1864019",
+      "subject_cik": "1988776",
+      "predicate": "OWNS",
+      "stake_pct": 11.0
+    },
+    {
+      "accession": "0001104659-24-041150",
+      "filer_cik": "1346824",
+      "subject_cik": "1671858",
+      "predicate": "OWNS",
+      "stake_pct": null
+    }
+  ]
+}
