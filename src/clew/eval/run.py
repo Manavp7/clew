@@ -167,9 +167,73 @@ def _cik(session, entity_id: str | None) -> str | None:
     return (e.external_ids or {}).get("cik") if e else None
 
 
+def _score_backend_on_gold(backend: str) -> dict:
+    """Resolve the full ER-gold record set with ``backend`` and score pairwise."""
+    from clew.resolve.resolver import Record, resolve_records
+
+    gold = load_er_pairs()
+    records: list[Record] = []
+    pair_rids: list[tuple[int, int, str]] = []
+    rid = 0
+    for pair in gold["pairs"]:
+        a_rid, b_rid = rid, rid + 1
+        records.append(Record(a_rid, pair["a"], "Organization"))
+        records.append(Record(b_rid, pair["b"], "Organization"))
+        pair_rids.append((a_rid, b_rid, pair["label"]))
+        rid += 2
+
+    if backend == "splink":
+        from clew.resolve.splink_er import resolve_records_splink
+
+        clusters = resolve_records_splink(records, train=False)
+    else:
+        clusters = resolve_records(records)
+
+    rid_to_cluster: dict[int, int] = {}
+    for ci, c in enumerate(clusters):
+        for m in c.members:
+            rid_to_cluster[m.rid] = ci
+
+    gold_same, gold_diff, predicted_same = set(), set(), set()
+    for a_rid, b_rid, label in pair_rids:
+        key = frozenset({a_rid, b_rid})
+        (gold_same if label == "same" else gold_diff).add(key)
+        if rid_to_cluster.get(a_rid) == rid_to_cluster.get(b_rid):
+            predicted_same.add(key)
+    return pairwise_er_metrics(predicted_same, gold_same, gold_diff)
+
+
+def eval_er_compare() -> dict:
+    """Compare ER backends on the gold set; recommend the default by metrics.
+
+    Promotes Splink to default ONLY if it strictly beats the union-find resolver
+    on pair-accuracy (then false-merge rate). Otherwise keeps the union-find
+    default. Persists a versioned eval_run for each backend.
+    """
+    results: dict[str, dict] = {}
+    for backend in ("default", "splink"):
+        try:
+            m = _score_backend_on_gold(backend)
+        except Exception as exc:  # noqa: BLE001 - splink optional/fragile
+            m = {"error": str(exc)}
+        results[backend] = m
+        _persist("er", f"er_pairs@v1:{backend}", m)
+
+    d, s = results["default"], results.get("splink", {})
+
+    def _key(m: dict) -> tuple[float, float]:
+        if "error" in m:
+            return (-1.0, -1.0)
+        return (m.get("pair_accuracy", 0.0), -m.get("false_merge_rate", 1.0))
+
+    recommended = "splink" if _key(s) > _key(d) else "default"
+    return {"results": results, "recommended_default": recommended}
+
+
 def eval_all() -> dict:
     return {
         "er": eval_er(),
         "extraction": eval_extraction(),
         "citation": eval_citation(),
+        "er_backend_comparison": eval_er_compare(),
     }

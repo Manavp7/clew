@@ -13,9 +13,11 @@ from clew.resolve.normalize import normalized
 from clew.resolve.resolver import Cluster, Record, _pick_canonical, _UnionFind
 
 MATCH_THRESHOLD = 0.9
+# Below this many records, EM training is unstable -> use fixed Fellegi-Sunter weights.
+EM_MIN_RECORDS = 500
 
 
-def resolve_records_splink(records: list[Record]) -> list[Cluster]:
+def resolve_records_splink(records: list[Record], *, train: bool = True) -> list[Cluster]:
     import pandas as pd
     import splink.comparison_library as cl
     from splink import DuckDBAPI, Linker, SettingsCreator, block_on
@@ -49,6 +51,20 @@ def resolve_records_splink(records: list[Record]) -> list[Cluster]:
         retain_intermediate_calculation_columns=False,
     )
     linker = Linker(df, settings, db_api=DuckDBAPI())
+
+    # EM training only when there is enough data; otherwise keep the fixed weights
+    # (Splink's EM cold-starts poorly on small corpora — see P3.5 rationale).
+    if train and len(records) >= EM_MIN_RECORDS:
+        try:
+            from splink import block_on as _block_on
+
+            linker.training.estimate_u_using_random_sampling(max_pairs=1_000_000)
+            linker.training.estimate_parameters_using_expectation_maximisation(
+                _block_on("substr(name_norm, 1, 4)")
+            )
+        except Exception as exc:  # noqa: BLE001 - fall back to fixed weights
+            print(f"  ! Splink EM training failed, using fixed weights: {exc}")
+
     preds = linker.inference.predict(threshold_match_probability=0.5).as_pandas_dataframe()
 
     uf = _UnionFind(len(records))

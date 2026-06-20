@@ -46,6 +46,11 @@ class Settings(BaseSettings):
     vector_backend: str = "pgvector"
     qdrant_path: str = "data/qdrant"
 
+    # ER backend: "default" (CIK + Jaro-Winkler union-find) or "splink".
+    # Kept as "default" because it beats Splink on the gold at current data volume
+    # (see `clew eval er-compare`); flip to "splink" once EM training wins.
+    er_backend: str = "default"
+
     # --- SEC EDGAR ---
     sec_user_agent: str = "clew-research research@example.com"
 

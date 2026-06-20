@@ -166,6 +166,14 @@ def eval_citation_cmd() -> None:
     console.print(eval_citation())
 
 
+@eval_app.command("er-compare")
+def eval_er_compare_cmd() -> None:
+    """Compare ER backends (union-find vs Splink) on the gold; recommend a default."""
+    from clew.eval.run import eval_er_compare
+
+    console.print(eval_er_compare())
+
+
 @reconcile_app.command("supersede")
 def reconcile_supersede_cmd() -> None:
     """Link consecutive ownership claims (set valid_to + superseded_by)."""

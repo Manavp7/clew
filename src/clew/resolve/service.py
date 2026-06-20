@@ -137,7 +137,7 @@ def _materialize_cluster(
 
 
 def run_resolution(backend: str | None = None) -> dict:
-    backend = backend or "default"
+    backend = backend or get_settings().er_backend
     with write_session() as session:
         records, _ = _collect_records(session)
         from clew.resolve.feedback import load_decisions
